@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rompecabezas - Selección de Nivel</title>
+    <!-- Estilos Globales -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- SVG Defs Ocultos -->
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <symbol id="icon-check" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- Fondo -->
+    <div class="bg-pattern" aria-hidden="true"></div>
+
+    <!-- Panel Usuario -->
+    <div class="user-info-panel">
+        <div class="info-item"><strong>Guest</strong></div>
+        <div class="info-item">Selección</div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <main class="game-container centered-layout">
+        
+        <header class="page-header">
+            <h1 class="title-cartoon">Selecciona tu imagen</h1>
+        </header>
+
+        <!-- Grilla de Imágenes -->
+        <section class="selection-grid" aria-label="Galería de imágenes para el rompecabezas">
+            
+            <!-- Tarjeta 1: Perrito -->
+            <button class="image-card" data-img-url="https://images.unsplash.com/photo-1731177507280-da7b8ef7744b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXRlJTIwcHVwcHklMjBjYXJ0b29uJTIwc3R5bGV8ZW58MXx8fHwxNzY4NDU0NDYxfDA&ixlib=rb-4.1.0&q=80&w=400" aria-label="Seleccionar imagen de Perrito">
+                <img src="https://images.unsplash.com/photo-1731177507280-da7b8ef7744b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXRlJTIwcHVwcHklMjBjYXJ0b29uJTIwc3R5bGV8ZW58MXx8fHwxNzY4NDU0NDYxfDA&ixlib=rb-4.1.0&q=80&w=400" alt="Ilustración de un perrito tierno">
+                <div class="selection-overlay">
+                    <svg class="check-icon"><use xlink:href="#icon-check"></use></svg>
+                </div>
+            </button>
+
+            <!-- Tarjeta 2: Gatito -->
+            <button class="image-card" data-img-url="https://images.unsplash.com/photo-1637424864367-7ab8752c19c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXRlJTIwa2l0dGVuJTIwY2FydG9vbiUyMHN0eWxlfGVufDF8fHx8MTc2ODQ1NDQ2MXww&ixlib=rb-4.1.0&q=80&w=400" aria-label="Seleccionar imagen de Gatito">
+                <img src="https://images.unsplash.com/photo-1637424864367-7ab8752c19c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXRlJTIwa2l0dGVuJTIwY2FydG9vbiUyMHN0eWxlfGVufDF8fHx8MTc2ODQ1NDQ2MXww&ixlib=rb-4.1.0&q=80&w=400" alt="Ilustración de un gatito adorable">
+                <div class="selection-overlay">
+                    <svg class="check-icon"><use xlink:href="#icon-check"></use></svg>
+                </div>
+            </button>
+
+            <!-- Tarjeta 3: Paisaje -->
+            <button class="image-card" data-img-url="https://images.unsplash.com/photo-1750918619706-f6b77910fd3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWF1dGlmdWwlMjBuYXR1cmUlMjBsYW5kc2NhcGUlMjBjYXJ0b29ufGVufDF8fHx8MTc2ODQ1NDQ2MXww&ixlib=rb-4.1.0&q=80&w=400" aria-label="Seleccionar imagen de Paisaje Natural">
+                <img src="https://images.unsplash.com/photo-1750918619706-f6b77910fd3f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWF1dGlmdWwlMjBuYXR1cmUlMjBsYW5kc2NhcGUlMjBjYXJ0b29ufGVufDF8fHx8MTc2ODQ1NDQ2MXww&ixlib=rb-4.1.0&q=80&w=400" alt="Paisaje natural estilo cartoon">
+                <div class="selection-overlay">
+                    <svg class="check-icon"><use xlink:href="#icon-check"></use></svg>
+                </div>
+            </button>
+
+            <!-- Tarjeta 4: Números -->
+            <button class="image-card" data-img-url="https://images.unsplash.com/photo-1714475575582-5230a87c1d1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMG51bWJlcnMlMjBpbGx1c3RyYXRpb24lMjBlZHVjYXRpb258ZW58MXx8fHwxNzY4NDU0NDYxfDA&ixlib=rb-4.1.0&q=80&w=400" aria-label="Seleccionar imagen de Números Coloridos">
+                <img src="https://images.unsplash.com/photo-1714475575582-5230a87c1d1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMG51bWJlcnMlMjBpbGx1c3RyYXRpb24lMjBlZHVjYXRpb258ZW58MXx8fHwxNzY4NDU0NDYxfDA&ixlib=rb-4.1.0&q=80&w=400" alt="Números educativos de colores">
+                <div class="selection-overlay">
+                    <svg class="check-icon"><use xlink:href="#icon-check"></use></svg>
+                </div>
+            </button>
+
+            <!-- Tarjeta 5: Arte Abstracto/Colores -->
+            <button class="image-card" data-img-url="https://images.unsplash.com/photo-1597863881769-8d8ff8ab8b2a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMGFic3RyYWN0JTIwYXJ0JTIwZm9yJTIwa2lkc3xlbnwxfHx8fDE3Njg0NTQ0NjF8MA&ixlib=rb-4.1.0&q=80&w=400" aria-label="Seleccionar imagen de Colores y Formas">
+                <img src="https://images.unsplash.com/photo-1597863881769-8d8ff8ab8b2a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMGFic3RyYWN0JTIwYXJ0JTIwZm9yJTIwa2lkc3xlbnwxfHx8fDE3Njg0NTQ0NjF8MA&ixlib=rb-4.1.0&q=80&w=400" alt="Arte abstracto colorido">
+                <div class="selection-overlay">
+                    <svg class="check-icon"><use xlink:href="#icon-check"></use></svg>
+                </div>
+            </button>
+
+            <!-- Tarjeta 6: Héroe -->
+            <button class="image-card" data-img-url="https://images.unsplash.com/photo-1764788127523-ac9fd80be5f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdXBlcmhlcm8lMjBjaGFyYWN0ZXIlMjBjYXJ0b29ufGVufDF8fHx8MTc2ODQ1NDQ2MXww&ixlib=rb-4.1.0&q=80&w=400" aria-label="Seleccionar imagen de Superhéroe">
+                <img src="https://images.unsplash.com/photo-1764788127523-ac9fd80be5f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdXBlcmhlcm8lMjBjaGFyYWN0ZXIlMjBjYXJ0b29ufGVufDF8fHx8MTc2ODQ1NDQ2MXww&ixlib=rb-4.1.0&q=80&w=400" alt="Personaje superhéroe">
+                <div class="selection-overlay">
+                    <svg class="check-icon"><use xlink:href="#icon-check"></use></svg>
+                </div>
+            </button>
+
+        </section>
+
+        <div class="actions-container">
+            <a href="index.html" class="btn btn-large btn-return">Regresar</a>
+            <button id="btn-continue" class="btn btn-large btn-primary" disabled aria-disabled="true">
+                Continuar
+            </button>
+        </div>
+
+    </main>
+
+    <script src="../js/seleccion.js"></script>
+</body>
+</html>

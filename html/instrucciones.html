@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rompecabezas - Instrucciones</title>
+    <!-- Vinculamos el CSS global -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- RECURSOS GLOBALES SVG (CRÍTICO: Para que funcione la Mascota y los colores) -->
+    <svg width="0" height="0" style="position: absolute; overflow: hidden;" aria-hidden="true">
+        <defs>
+            <linearGradient id="globalSuitGradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1"/><stop offset="50%" style="stop-color:#2563EB;stop-opacity:1"/><stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1"/></linearGradient>
+            <linearGradient id="globalCapeGradient" x1="50%" y1="0%" x2="50%" y2="100%"><stop offset="0%" style="stop-color:#EF4444;stop-opacity:1"/><stop offset="100%" style="stop-color:#991B1B;stop-opacity:1"/></linearGradient>
+            <linearGradient id="globalSkinGradient" x1="0%" y1="0%" x2="100%" y2="50%"><stop offset="0%" style="stop-color:#FFE4C4;stop-opacity:1"/><stop offset="100%" style="stop-color:#F5C19B;stop-opacity:1"/></linearGradient>
+            <linearGradient id="globalGoldGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#FCD34D;stop-opacity:1"/><stop offset="50%" style="stop-color:#F59E0B;stop-opacity:1"/><stop offset="100%" style="stop-color:#B45309;stop-opacity:1"/></linearGradient>
+            <linearGradient id="globalMetalGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#E5E7EB;stop-opacity:1"/><stop offset="50%" style="stop-color:#9CA3AF;stop-opacity:1"/><stop offset="100%" style="stop-color:#4B5563;stop-opacity:1"/></linearGradient>
+            <linearGradient id="globalBlueEye" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1"/><stop offset="100%" style="stop-color:#2563EB;stop-opacity:1"/></linearGradient>
+            <linearGradient id="globalDogFur" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1"/><stop offset="100%" style="stop-color:#B45309;stop-opacity:1"/></linearGradient>
+            <linearGradient id="globalAltSuit" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#10B981;stop-opacity:1"/><stop offset="100%" style="stop-color:#047857;stop-opacity:1"/></linearGradient>
+            <linearGradient id="globalAltCape" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1"/><stop offset="100%" style="stop-color:#5B21B6;stop-opacity:1"/></linearGradient>
+            <linearGradient id="globalSkinGradientAlt" x1="0%" y1="0%" x2="100%" y2="50%"><stop offset="0%" style="stop-color:#FFE4C4;stop-opacity:1"/><stop offset="100%" style="stop-color:#F5C19B;stop-opacity:1"/></linearGradient>
+        </defs>
+    </svg>
+
+    <!-- Fondo decorativo -->
+    <div class="bg-pattern" aria-hidden="true"></div>
+
+    <!-- Panel de Información -->
+    <div class="user-info-panel" id="user-info-panel" role="complementary">
+        <div class="info-item"><strong>Guest</strong></div>
+        <div class="info-item">Time: <span id="user-time-display">Free</span></div>
+        <div class="info-item">Nivel: <span id="user-level-display">Fácil</span></div>
+    </div>
+
+    <main class="game-container">
+        <section id="instructions-screen" class="screen-section active">
+            <h1 class="settings-title">Instrucciones del Juego</h1>
+
+            <div class="instructions-layout">
+                
+                <!-- Texto de Bienvenida -->
+                <div class="instructions-text-card">
+                    <p>
+                        ¡Bienvenido al juego! Arrastra y suelta las piezas en sus lugares correctos.
+                        Une las formas y diseños para completar el rompecabezas.
+                    </p>
+                </div>
+
+                <!-- Contenedor de Pasos (Tarjetas Visuales) -->
+                <div class="steps-container">
+                    
+                    <!-- Tarjeta 1: Arrastrar (Estilo Azul) -->
+                    <div class="step-card drag-step">
+                        <div class="step-number">1</div>
+                        <div class="step-icon-container">
+                            <!-- SVG: Pieza moviéndose y mano -->
+                            <svg viewBox="0 0 100 100" class="step-svg drag-animation">
+                                <!-- Pieza de puzzle -->
+                                <path d="M20,30 L50,30 L50,20 Q60,10 70,20 L70,30 L80,30 L80,70 L20,70 Z" fill="#4ecdc4" stroke="#2980b9" stroke-width="2" />
+                                <circle cx="50" cy="50" r="5" fill="#fff" opacity="0.5"/>
+                                <!-- Mano arrastrando -->
+                                <path class="hand" d="M60,60 L50,50 L55,45 L70,60 L60,80 L50,75 Z" fill="#ff6b6b" stroke="#c0392b" stroke-width="2" />
+                            </svg>
+                        </div>
+                        <h3>Arrastra</h3>
+                        <p>Lleva las piezas a su lugar.</p>
+                    </div>
+
+                    <!-- Tarjeta 2: Rotar (Estilo Amarillo) -->
+                    <div class="step-card rotate-step">
+                        <div class="step-number">2</div>
+                        <div class="step-icon-container">
+                            <!-- SVG: Pieza girando -->
+                            <svg viewBox="0 0 100 100" class="step-svg rotate-animation">
+                                <!-- Pieza -->
+                                <rect x="30" y="30" width="40" height="40" rx="5" fill="#ffd740" stroke="#f39c12" stroke-width="2" />
+                                <!-- Flecha de rotación -->
+                                <path d="M80,50 A30,30 0 0,1 50,80" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round" marker-end="url(#arrowhead)" />
+                                <!-- Icono de toque (dedo) -->
+                                <path class="touch" d="M50,50 L40,40 L45,35 L60,50 L50,70 L40,65 Z" fill="#333" opacity="0.3"/>
+                            </svg>
+                        </div>
+                        <h3>Toca</h3>
+                        <p>Haz clic para girar 90°.</p>
+                    </div>
+                </div>
+
+                <!-- Botón Regresar (Rojo) -->
+                <div class="settings-actions" style="justify-content: center; width: 100%;">
+                    <button type="button" class="btn btn-play" id="btn-back-home" style="padding: 15px 60px;">
+                        <span>Regresar</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mascota con vector -->
+    <aside class="mascot-section" aria-labelledby="mascot-text">
+        <div class="speech-bubble" id="mascot-text" role="status">
+            ¿Ves? ¡Es muy fácil! Diviértete y aprende mientras juegas.
+        </div>
+        <!-- Contenedor vectorial -->
+        <div id="global-mascot-container" class="mascot-vector-container">
+            <!-- El JS llenará esto automáticamente -->
+        </div>
+    </aside>
+
+    <script src="../js/instrucciones.js"></script>
+</body>
+</html>
