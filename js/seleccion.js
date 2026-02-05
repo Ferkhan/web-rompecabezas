@@ -1,79 +1,108 @@
-/**
- * Lógica de la Pantalla de Selección de Imagen (seleccion.js)
- * Permite elegir la imagen del rompecabezas y guarda la elección.
- */
-
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Referencias ---
     const btnBack = document.getElementById('btn-back');
     const btnContinue = document.getElementById('btn-continue');
     const imageCards = document.querySelectorAll('.image-card');
     const mascotContainer = document.getElementById('global-mascot-container');
     const mascotText = document.getElementById('mascot-text');
-    
-    // Panel Superior
     const userTimeDisplay = document.getElementById('user-time-display');
     const userLevelDisplay = document.getElementById('user-level-display');
 
     let selectedUrl = null;
 
-    // --- Inicialización ---
-    loadSavedAvatar();      // Cargar tu personaje
-    loadUserPreferences();  // Cargar nivel/tiempo
+    loadSavedAvatar();
+    loadUserPreferences();
 
-    // Verificar si ya había una selección previa (al regresar de otra pantalla)
     const previousSelection = localStorage.getItem('selectedPuzzleImage');
 
-    // --- Lógica de las Tarjetas ---
-    imageCards.forEach(card => {
+    const cardsArray = Array.from(imageCards);
+    const columnsPerRow = 3;
+
+    imageCards.forEach((card, index) => {
         const imgUrl = card.getAttribute('data-img-url');
 
-        // Si esta tarjeta coincide con la guardada, márcala
         if (imgUrl === previousSelection) {
             selectCard(card, imgUrl);
         }
 
         card.addEventListener('click', () => {
             selectCard(card, imgUrl);
-            
-            // Feedback del Asistente
+
             if (mascotText) {
-                mascotText.textContent = "¡Excelente elección! Esa imagen quedará genial.";
+                const message = "¡Excelente elección! Esa imagen quedará genial.";
+                mascotText.textContent = message;
+                mascotText.setAttribute('aria-label', `Mensaje del asistente: ${message}`);
             }
+        });
+
+        card.addEventListener('keydown', (e) => {
+            handleArrowNavigation(e, index, cardsArray, columnsPerRow);
         });
     });
 
-    /**
-     * Marca una tarjeta como seleccionada y actualiza el estado.
-     */
+    function handleArrowNavigation(e, currentIndex, items, columns) {
+        if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+
+        e.preventDefault();
+
+        const totalItems = items.length;
+        const currentRow = Math.floor(currentIndex / columns);
+        const currentCol = currentIndex % columns;
+        const totalRows = Math.ceil(totalItems / columns);
+
+        let newIndex = currentIndex;
+
+        switch (e.key) {
+            case 'ArrowUp':
+                if (currentRow > 0) {
+                    newIndex = (currentRow - 1) * columns + currentCol;
+                }
+                break;
+            case 'ArrowDown':
+                if (currentRow < totalRows - 1) {
+                    const potentialIndex = (currentRow + 1) * columns + currentCol;
+                    if (potentialIndex < totalItems) {
+                        newIndex = potentialIndex;
+                    }
+                }
+                break;
+            case 'ArrowLeft':
+                if (currentIndex > 0) {
+                    newIndex = currentIndex - 1;
+                }
+                break;
+            case 'ArrowRight':
+                if (currentIndex < totalItems - 1) {
+                    newIndex = currentIndex + 1;
+                }
+                break;
+        }
+
+        if (newIndex !== currentIndex && items[newIndex]) {
+            items[newIndex].focus();
+        }
+    }
+
     function selectCard(cardElement, url) {
-        // 1. Quitar selección visual de todas
         imageCards.forEach(c => {
             c.classList.remove('selected');
             c.setAttribute('aria-pressed', 'false');
         });
 
-        // 2. Marcar la actual
         cardElement.classList.add('selected');
         cardElement.setAttribute('aria-pressed', 'true');
 
-        // 3. Actualizar variable y guardar en LocalStorage (CRÍTICO)
         selectedUrl = url;
         localStorage.setItem('selectedPuzzleImage', selectedUrl);
 
-        // 4. Habilitar botón continuar
         if (btnContinue) {
             btnContinue.removeAttribute('disabled');
             btnContinue.setAttribute('aria-disabled', 'false');
         }
     }
 
-    // --- Botones de Navegación ---
-
     if (btnBack) {
         btnBack.addEventListener('click', () => {
-            // Regresar a la revisión de detalles
             window.location.href = 'revision.html';
         });
     }
@@ -85,8 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    // --- Funciones Auxiliares (Reutilizadas para consistencia) ---
 
     function loadSavedAvatar() {
         const savedAvatar = localStorage.getItem('savedAvatarSVG');

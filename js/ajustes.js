@@ -1,59 +1,71 @@
-/**
- * Lógica de la Pantalla de Ajustes (ajustes.js)
- * Maneja la configuración, previsualización y persistencia de datos.
- */
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ==========================================
-    // 1. INICIALIZACIÓN Y REFERENCIAS
-    // ==========================================
     loadSavedSettings();
-    loadSavedAvatar(); // <--- NUEVO: Cargar el avatar al iniciar la página de ajustes
-    
+    loadSavedAvatar();
+
     const settingsForm = document.getElementById('settings-form');
     const previewGrid = document.getElementById('preview-grid-container');
-    
-    // Botones de Acción
-    const btnSave = document.getElementById('btn-save');     
-    const btnDefault = document.getElementById('btn-default'); 
-    const btnAssist = document.getElementById('btn-assist');   
-    
-    // Elementos de Feedback Visual
+    const btnSave = document.getElementById('btn-save');
+    const btnDefault = document.getElementById('btn-default');
+    const btnAssist = document.getElementById('btn-assist');
+    const btnBack = document.getElementById('btn-back');
     const badgeDifficulty = document.getElementById('badge-difficulty');
     const badgeTime = document.getElementById('badge-time');
-    
-    // Panel de Usuario (para actualizar en tiempo real)
     const userTimeDisplay = document.getElementById('user-time-display');
     const userLevelDisplay = document.getElementById('user-level-display');
 
-    // Actualizar la vista previa inicial
+    const fieldsets = document.querySelectorAll('.control-group');
+    setupFieldsetNavigation(fieldsets);
+
     updatePreviewState();
 
-    // ==========================================
-    // 2. LÓGICA PRINCIPAL
-    // ==========================================
+    function setupFieldsetNavigation(fieldsets) {
+        const fieldsetsArray = Array.from(fieldsets);
 
-    /**
-     * Lee los valores del formulario y actualiza toda la interfaz visual
-     */
+        fieldsetsArray.forEach((fieldset, index) => {
+            const radioInputs = fieldset.querySelectorAll('input[type="radio"]');
+
+            radioInputs.forEach(input => {
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+                        e.preventDefault();
+
+                        let targetIndex = index;
+                        if (e.key === 'ArrowUp' && index > 0) {
+                            targetIndex = index - 1;
+                        } else if (e.key === 'ArrowDown' && index < fieldsetsArray.length - 1) {
+                            targetIndex = index + 1;
+                        }
+
+                        if (targetIndex !== index) {
+                            const targetFieldset = fieldsetsArray[targetIndex];
+                            const targetRadios = targetFieldset.querySelectorAll('input[type="radio"]');
+                            const checkedRadio = Array.from(targetRadios).find(r => r.checked);
+                            if (checkedRadio) {
+                                checkedRadio.focus();
+                            } else if (targetRadios.length > 0) {
+                                targetRadios[0].focus();
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    }
+
     function updatePreviewState() {
         if (!settingsForm) return;
 
         const formData = new FormData(settingsForm);
-        
         const size = parseInt(formData.get('size') || 3);
         const difficulty = formData.get('difficulty') || 'easy';
         const timeVal = formData.get('time') || 'free';
 
-        // A. Actualizar Grilla Visual (Cuadrícula)
         updateGridVisuals(size);
 
-        // B. Obtener textos legibles
         const diffText = getDifficultyLabel(difficulty);
         const timeText = getTimeLabel(timeVal);
 
-        // C. Actualizar Badges y Panel Superior
         updateFeedbackUI(timeText, diffText);
     }
 
@@ -88,13 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function triggerAnimation(element) {
         element.style.animation = 'none';
-        element.offsetHeight; /* trigger reflow */
+        element.offsetHeight;
         element.style.animation = 'popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
     }
-
-    // ==========================================
-    // 3. PERSISTENCIA DE DATOS
-    // ==========================================
 
     function loadSavedSettings() {
         const savedData = localStorage.getItem('puzzleConfig');
@@ -107,9 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /**
-     * Carga el avatar guardado en el contenedor de la mascota
-     */
     function loadSavedAvatar() {
         const savedAvatar = localStorage.getItem('savedAvatarSVG');
         const mascotContainer = document.getElementById('global-mascot-container');
@@ -136,10 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }
 
-    // ==========================================
-    // 4. EVENT LISTENERS
-    // ==========================================
-
     if (settingsForm) {
         settingsForm.addEventListener('change', updatePreviewState);
     }
@@ -165,11 +166,13 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'asistente.html';
         });
     }
-});
 
-// ==========================================
-// 5. UTILIDADES
-// ==========================================
+    if (btnBack) {
+        btnBack.addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    }
+});
 
 function setRadioValue(name, value) {
     const radio = document.querySelector(`input[name="${name}"][value="${value}"]`);
