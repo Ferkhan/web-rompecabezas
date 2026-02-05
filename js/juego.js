@@ -178,22 +178,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 let randomRot = (Math.floor(Math.random() * 3) + 1) * 90; // 90, 180 o 270
                 piece.dataset.currentRotation = randomRot;
                 piece.style.transform = `rotate(${randomRot}deg)`;
-                
+
                 piece.classList.add('clickable');
-                piece.addEventListener('click', handleRotateClick); 
-                
+                piece.addEventListener('click', handleRotateClick);
+
+                // Accesibilidad: Hacer focuseable y añadir controles de teclado
+                piece.setAttribute('tabindex', '0');
+                piece.setAttribute('role', 'button');
+                piece.setAttribute('aria-label', `Pieza ${i + 1}. Presiona Enter o R para rotar. Actualmente rotada ${randomRot} grados`);
+                piece.addEventListener('keydown', handleKeyboardRotate);
+
                 if (i === 0) addVisualCue(piece, 'tap');
                 boardElement.children[i].appendChild(piece);
             } 
             
             // MEDIO: Piezas RECTAS (0º) pero DESORDENADAS (Barajadas)
             else if (config.difficulty === 'medium') {
-                piece.dataset.currentRotation = 0; 
+                piece.dataset.currentRotation = 0;
                 piece.draggable = true;
                 piece.addEventListener('dragstart', handleDragStart);
-                
+
+                // Accesibilidad: Hacer focuseable
+                piece.setAttribute('tabindex', '0');
+                piece.setAttribute('aria-label', `Pieza ${i + 1}. Arrastra para mover de posición`);
+
                 if (i === 0) addVisualCue(piece, 'drag');
-                piecesArray.push(piece); 
+                piecesArray.push(piece);
             } 
 
             // DIFÍCIL: Piezas DESORDENADAS y ROTADAS
@@ -201,14 +211,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 let randomRot = Math.floor(Math.random() * 4) * 90;
                 piece.dataset.currentRotation = randomRot;
                 piece.style.transform = `rotate(${randomRot}deg)`;
-                
+
                 piece.draggable = true;
-                piece.classList.add('clickable'); 
+                piece.classList.add('clickable');
                 piece.addEventListener('dragstart', handleDragStart);
-                piece.addEventListener('click', handleRotateClick); 
-                
-                if (i === 0) addVisualCue(piece, 'both'); 
-                piecesArray.push(piece); 
+                piece.addEventListener('click', handleRotateClick);
+
+                // Accesibilidad: Hacer focuseable y añadir controles de teclado
+                piece.setAttribute('tabindex', '0');
+                piece.setAttribute('role', 'button');
+                piece.setAttribute('aria-label', `Pieza ${i + 1}. Presiona Enter o R para rotar. Arrastra para mover. Actualmente rotada ${randomRot} grados`);
+                piece.addEventListener('keydown', handleKeyboardRotate);
+
+                if (i === 0) addVisualCue(piece, 'both');
+                piecesArray.push(piece);
             }
         }
 
@@ -255,9 +271,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. INTERACCIÓN (EVENTOS)
     // ==========================================
 
-    // --- Rotación (Clic) ---
+    // --- Rotación (Clic y Teclado) ---
     function handleRotateClick(e) {
-        const piece = e.target;
+        const piece = e.currentTarget || e.target;
         // Evitar conflicto con arrastre
         if (piece.classList.contains('dragging')) return;
 
@@ -272,9 +288,34 @@ document.addEventListener('DOMContentLoaded', () => {
         currentRot = (currentRot + 90) % 360;
         piece.dataset.currentRotation = currentRot;
         piece.style.transform = `rotate(${currentRot}deg)`;
-        
+
         moves++;
         updateStats();
+
+        // Anunciar la rotación para lectores de pantalla
+        const pieceIndex = parseInt(piece.dataset.correctIndex) + 1;
+        const announcement = `Pieza ${pieceIndex} rotada ${currentRot} grados`;
+        announceToScreenReader(announcement);
+    }
+
+    // --- Control de Teclado para Rotación ---
+    function handleKeyboardRotate(e) {
+        // Enter, Space o R para rotar
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'r' || e.key === 'R') {
+            e.preventDefault();
+            handleRotateClick(e);
+        }
+    }
+
+    // Función para anunciar cambios a lectores de pantalla
+    function announceToScreenReader(message) {
+        const announcement = document.createElement('div');
+        announcement.setAttribute('role', 'status');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.className = 'sr-only';
+        announcement.textContent = message;
+        document.body.appendChild(announcement);
+        setTimeout(() => announcement.remove(), 1000);
     }
 
     // --- Arrastre (Drag & Drop) ---
@@ -437,22 +478,57 @@ document.addEventListener('DOMContentLoaded', () => {
     // Toggle Menú
     if(btnMenuToggle) {
         btnMenuToggle.addEventListener('click', () => {
-            sideMenuOverlay.classList.remove('hidden');
+            openSideMenu();
         });
     }
-    
+
     if(btnMenuClose) {
         btnMenuClose.addEventListener('click', () => {
-            sideMenuOverlay.classList.add('hidden');
+            closeSideMenu();
         });
+    }
+
+    // Funciones de Focus Management para el Menú
+    function openSideMenu() {
+        sideMenuOverlay.classList.remove('hidden');
+        sideMenuOverlay.setAttribute('aria-hidden', 'false');
+        btnMenuToggle.setAttribute('aria-expanded', 'true');
+
+        // CRÍTICO: Mover focus al título del menú para accesibilidad
+        const menuTitle = document.getElementById('menu-title');
+        if (menuTitle) {
+            // Hacer focuseable si no lo es
+            if (!menuTitle.hasAttribute('tabindex')) {
+                menuTitle.setAttribute('tabindex', '-1');
+            }
+            setTimeout(() => menuTitle.focus(), 100);
+        }
+    }
+
+    function closeSideMenu() {
+        sideMenuOverlay.classList.add('hidden');
+        sideMenuOverlay.setAttribute('aria-hidden', 'true');
+        btnMenuToggle.setAttribute('aria-expanded', 'false');
+
+        // CRÍTICO: Retornar focus al botón que abrió el menú
+        if (btnMenuToggle) {
+            btnMenuToggle.focus();
+        }
     }
 
     // Cerrar menú al hacer click fuera
     if(sideMenuOverlay) {
         sideMenuOverlay.addEventListener('click', (e) => {
-            if (e.target === sideMenuOverlay) sideMenuOverlay.classList.add('hidden');
+            if (e.target === sideMenuOverlay) closeSideMenu();
         });
     }
+
+    // Cerrar menú con tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !sideMenuOverlay.classList.contains('hidden')) {
+            closeSideMenu();
+        }
+    });
 
     // Timer
     function startTimer() {
@@ -465,15 +541,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    function updateStats() { 
-        if(moveCountDisplay) moveCountDisplay.textContent = moves; 
+    function updateStats() {
+        if(moveCountDisplay) {
+            moveCountDisplay.textContent = moves;
+            // Actualizar aria-label para lectores de pantalla
+            const scoreContainer = moveCountDisplay.closest('.score-badge');
+            if (scoreContainer) {
+                scoreContainer.setAttribute('aria-label', `Movimientos realizados: ${moves}`);
+            }
+        }
     }
 
     function endGame() {
         clearInterval(timerInterval);
         if(finalTimeDisplay) finalTimeDisplay.textContent = timerDisplay.textContent;
         if(finalMovesDisplay) finalMovesDisplay.textContent = moves;
-        if(victoryModal) victoryModal.classList.remove('hidden');
+
+        if(victoryModal) {
+            victoryModal.classList.remove('hidden');
+            victoryModal.setAttribute('aria-hidden', 'false');
+
+            // CRÍTICO: Mover focus al título del modal para accesibilidad
+            const victoryTitle = document.getElementById('victory-title');
+            if (victoryTitle) {
+                // Hacer focuseable si no lo es
+                if (!victoryTitle.hasAttribute('tabindex')) {
+                    victoryTitle.setAttribute('tabindex', '-1');
+                }
+                setTimeout(() => victoryTitle.focus(), 100);
+            }
+        }
+
         if(mascotText) mascotText.textContent = "¡Lo lograste! ¡Eres un campeón!";
     }
 

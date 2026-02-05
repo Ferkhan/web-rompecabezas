@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Skip link accesible por teclado -->
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
 
     <!-- DEFINICIÓN DE GRADIENTES PARA SVG (Necesarios para que se vean los colores) -->
     <svg width="0" height="0" style="position: absolute; overflow: hidden;" aria-hidden="true">
@@ -39,31 +41,32 @@
     <div class="bg-pattern" aria-hidden="true"></div>
 
     <!-- Panel de Información (Solo visual, Highlighted) -->
-    <div class="user-info-panel highlight" role="complementary">
+    <div class="user-info-panel highlight" aria-hidden="true">
         <div class="info-item"><strong>Personalizando...</strong></div>
     </div>
 
-    <main class="game-container">
-        <section id="customize-screen" class="screen-section active">
-            <h1 class="settings-title">Elige a tu compañero</h1>
+    <main class="game-container" id="contenido-principal" tabindex="-1">
+        <section id="customize-screen" class="screen-section active" aria-labelledby="titulo-personalizar">
+            <h1 id="titulo-personalizar" class="settings-title">Elige a tu compañero</h1>
+            <p class="sr-only">Esta pantalla te permite seleccionar el asistente virtual que te acompañará durante todo el juego. Elige entre un superhéroe clásico, un robot amigable, una mascota adorable o un héroe alternativo. Usa Tab para navegar entre las opciones y Enter o Espacio para seleccionar.</p>
 
             <div class="customize-layout">
                 <!-- Columna Izquierda: Preview Grande -->
-                <div class="customize-preview-column">
+                <div class="customize-preview-column" role="region" aria-label="Vista previa del avatar seleccionado">
                     <div class="avatar-preview-card">
-                        <div id="avatar-preview-container" class="avatar-vector-large"></div>
-                        <div class="preview-shine"></div>
+                        <div id="avatar-preview-container" class="avatar-vector-large" aria-hidden="true"></div>
+                        <div class="preview-shine" aria-hidden="true"></div>
                     </div>
                     <p class="preview-label">Seleccionado actual</p>
                 </div>
 
                 <!-- Columna Derecha: Grilla de Opciones SVG -->
-                <div class="customize-grid-column">
-                    <div class="avatar-grid" role="radiogroup" aria-label="Selección de avatar">
+                <div class="customize-grid-column" role="region" aria-label="Galería de opciones de avatar">
+                    <div class="avatar-grid" role="radiogroup" aria-labelledby="titulo-personalizar" aria-required="true">
                         
                         <!-- Opción 1: Superhéroe -->
-                        <button type="button" class="avatar-option selected" data-id="hero" aria-label="Superhéroe Clásico">
-                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg">
+                        <button type="button" class="avatar-option selected" data-id="hero" role="radio" aria-checked="true" aria-label="Superhéroe Clásico: Personaje heroico con traje azul brillante de superhéroe, capa roja ondeante al viento, antifaz azul oscuro cubriendo sus ojos, cinturón dorado con hebilla estrellada, cabello negro peinado hacia atrás, pose confiada y valiente con puños cerrados, símbolo dorado en el pecho. Estilo colorido y dinámico inspirado en cómics clásicos.">
+                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg" aria-hidden="true">
                                 <!-- Capa -->
                                 <path d="M130,140 Q60,250 80,450 L320,450 Q340,250 270,140 Z" fill="url(#globalCapeGradient)"/>
                                 <path d="M130,140 Q100,250 110,450 L140,450 Q130,300 150,140 Z" fill="#991B1B" opacity="0.4"/>
@@ -100,8 +103,8 @@
                         </button>
 
                         <!-- Opción 2: Robot -->
-                        <button type="button" class="avatar-option" data-id="robot" aria-label="Robot">
-                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg">
+                        <button type="button" class="avatar-option" data-id="robot" role="radio" aria-checked="false" aria-label="Robot Amigable: Robot metálico con cuerpo rectangular de color gris plateado brillante, cabeza cuadrada con bordes redondeados, dos ojos circulares azules luminosos expresivos, antena superior con luz roja parpadeante, brazos articulados extensibles, piernas robóticas con articulaciones visibles, boca rectangular en forma de pantalla. Diseño retro-futurista amigable inspirado en robots de ciencia ficción clásica.">
+                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg" aria-hidden="true">
                                 <path d="M165,300 L160,450 L195,450 L200,300 Z" fill="#6B7280"/>
                                 <path d="M235,300 L240,450 L205,450 L200,300 Z" fill="#6B7280"/>
                                 <rect x="155" y="380" width="45" height="70" rx="5" fill="url(#globalMetalGradient)"/>
@@ -118,8 +121,8 @@
                         </button>
 
                         <!-- Opción 3: Mascota -->
-                        <button type="button" class="avatar-option" data-id="pet" aria-label="Mascota">
-                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg">
+                        <button type="button" class="avatar-option" data-id="pet" role="radio" aria-checked="false" aria-label="Mascota Adorable: Perrito amigable de pelaje dorado anaranjado esponjoso, orejas marrones caídas expresivas, ojos grandes oscuros brillantes llenos de ternura, nariz negra redonda, lengua rosada asomándose alegremente, cola peluda levantada con entusiasmo, collar rojo con medalla dorada brillante, pose sentada con patas delanteras juntas, pecho amarillo claro. Estilo cartoon muy tierno y juguetón.">
+                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg" aria-hidden="true">
                                 <path d="M150,300 L140,450 L170,450 L180,300 Z" fill="url(#globalDogFur)"/>
                                 <path d="M250,300 L260,450 L230,450 L220,300 Z" fill="url(#globalDogFur)"/>
                                 <path d="M130,200 Q200,100 270,200 L270,350 Q200,400 130,350 Z" fill="url(#globalDogFur)"/>
@@ -136,8 +139,8 @@
                         </button>
 
                         <!-- Opción 4: Héroe Alternativo -->
-                        <button type="button" class="avatar-option" data-id="hero-alt" aria-label="Héroe Alternativo">
-                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg">
+                        <button type="button" class="avatar-option" data-id="hero-alt" role="radio" aria-checked="false" aria-label="Héroe Alternativo: Superhéroe con estilo diferente usando traje verde esmeralda brillante de cuerpo completo, capa morada larga y majestuosa ondeando dramáticamente, máscara verde ajustada cubriendo el rostro superior, guantes y botas gris oscuro, cabello negro corto despeinado, postura atlética y ágil, cinturón dorado utilitario. Paleta de colores única de verde, morado y dorado con estilo moderno y elegante.">
+                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg" aria-hidden="true">
                                 <path d="M130,140 Q60,250 80,450 L320,450 Q340,250 270,140 Z" fill="url(#globalAltCape)"/>
                                 <g transform="translate(0, -10)">
                                     <path d="M165,280 Q150,350 155,400 L160,450 L195,450 L198,330 L190,280 Z" fill="url(#globalAltSuit)"/>
@@ -162,23 +165,24 @@
                         </button>
 
                     </div>
+                    <p class="sr-only">Usa las teclas de flecha arriba y abajo para navegar entre las opciones de avatar. Presiona Enter o Espacio para seleccionar el avatar que prefieras.</p>
                 </div>
             </div>
 
-            <div class="settings-actions">
-                <button type="button" class="btn-large btn-cancel" id="btn-cancel-avatar">Cancelar</button>
-                <button type="button" class="btn-large btn-save" id="btn-save-avatar">Guardar Selección</button>
+            <div class="settings-actions" role="navigation" aria-label="Acciones de personalización">
+                <button type="button" class="btn-large btn-cancel" id="btn-cancel-avatar" aria-label="Cancelar personalización: Descarta los cambios y regresa a la pantalla anterior sin guardar tu selección de avatar">Cancelar</button>
+                <button type="button" class="btn-large btn-save" id="btn-save-avatar" aria-label="Guardar selección: Confirma y guarda el avatar seleccionado como tu asistente virtual permanente que te acompañará durante todo el juego">Guardar Selección</button>
             </div>
         </section>
     </main>
 
     <!-- Mascota (Muestra el actual) -->
-    <aside class="mascot-section" aria-labelledby="mascot-text">
-        <div class="speech-bubble" id="mascot-text" role="status">
+    <aside class="mascot-section">
+        <div class="speech-bubble" id="mascot-text" role="status" aria-live="polite">
             ¿Cuál es tu estilo favorito? ¡Elige sabiamente!
         </div>
         <!-- Aquí cargamos via JS el actual -->
-        <div id="current-mini-mascot" class="mascot-vector-container"></div>
+        <div id="current-mini-mascot" class="mascot-vector-container" aria-hidden="true"></div>
     </aside>
 
     <script src="../js/asistente.js"></script>

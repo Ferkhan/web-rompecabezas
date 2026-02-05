@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Skip link accesible por teclado -->
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
 
     <!-- ========================================== -->
     <!-- RECURSOS GLOBALES SVG (SOLUCIÓN DE COLOR) -->
@@ -43,132 +45,144 @@
     <div class="bg-pattern" aria-hidden="true"></div>
 
     <!-- Panel de Información de Usuario -->
-    <div class="user-info-panel highlight" id="user-info-panel" role="complementary" aria-label="Estado de la sesión">
-        <div class="info-item"><strong>Guest</strong></div>
-        <div class="info-item">Time: <span id="user-time-display">Free</span></div>
+    <div class="user-info-panel highlight" id="user-info-panel" aria-hidden="true" aria-label="Estado de la sesión del usuario">
+        <div class="info-item"><strong>Usuario invitado</strong></div>
+        <div class="info-item">Tiempo: <span id="user-time-display">Libre</span></div>
         <div class="info-item">Nivel: <span id="user-level-display">Fácil</span></div>
     </div>
 
-    <main class="game-container">
-        <section id="settings-screen" class="screen-section active">
-            
-            <h1 class="settings-title">Ajustes de Rompecabezas</h1>
+    <main class="game-container" id="contenido-principal" tabindex="-1">
+        <section id="settings-screen" class="screen-section active" aria-labelledby="titulo-ajustes">
+
+            <h1 id="titulo-ajustes" class="settings-title">Ajustes de Rompecabezas</h1>
+            <p class="sr-only">Configura la dificultad, tamaño, estímulos y tiempo límite del rompecabezas. Usa Tab para navegar por las opciones y Enter para seleccionar.</p>
 
             <div class="settings-grid-layout">
                 <!-- Panel Izquierdo: Formulario -->
-                <form id="settings-form" class="settings-controls">
+                <form id="settings-form" class="settings-controls" aria-labelledby="titulo-ajustes" aria-describedby="ayuda-form" novalidate>
+                    <p id="ayuda-form" class="sr-only">Usa Tab para moverte entre los campos del formulario. Usa las flechas del teclado para seleccionar opciones en los grupos de radio.</p>
                     
                     <!-- Dificultad -->
                     <fieldset class="control-group group-difficulty">
-                        <legend>Dificultad</legend>
-                        <div class="radio-options">
-                            <label class="custom-radio">
-                                <input type="radio" name="difficulty" value="easy" checked>
+                        <legend id="legend-difficulty">Dificultad</legend>
+                        <p id="help-difficulty" class="form-help">Selecciona el nivel de dificultad del rompecabezas. Fácil tiene menos piezas, Difícil tiene más piezas complejas.</p>
+                        <div class="radio-options" role="radiogroup" aria-labelledby="legend-difficulty">
+                            <label class="custom-radio" for="diff-easy">
+                                <input type="radio" id="diff-easy" name="difficulty" value="easy" checked required>
                                 <span class="radio-btn">Fácil</span>
                             </label>
-                            <label class="custom-radio">
-                                <input type="radio" name="difficulty" value="medium">
+                            <label class="custom-radio" for="diff-medium">
+                                <input type="radio" id="diff-medium" name="difficulty" value="medium" required>
                                 <span class="radio-btn">Medio</span>
                             </label>
-                            <label class="custom-radio">
-                                <input type="radio" name="difficulty" value="hard">
+                            <label class="custom-radio" for="diff-hard">
+                                <input type="radio" id="diff-hard" name="difficulty" value="hard" required>
                                 <span class="radio-btn">Difícil</span>
                             </label>
                         </div>
+                        <span class="error-message" id="error-difficulty" role="alert" aria-live="assertive"></span>
                     </fieldset>
 
                     <!-- Tamaño -->
                     <fieldset class="control-group group-size">
-                        <legend>Tamaño</legend>
-                        <div class="radio-options">
-                            <label class="custom-radio">
-                                <input type="radio" name="size" value="3" checked>
+                        <legend id="legend-size">Tamaño del tablero</legend>
+                        <p id="help-size" class="form-help">Elige el tamaño de la cuadrícula del rompecabezas. 3x3 tiene 9 piezas, 4x4 tiene 16 piezas, 5x5 tiene 25 piezas.</p>
+                        <div class="radio-options" role="radiogroup" aria-labelledby="legend-size">
+                            <label class="custom-radio" for="size-3">
+                                <input type="radio" id="size-3" name="size" value="3" checked required>
                                 <span class="radio-btn">3x3</span>
                             </label>
-                            <label class="custom-radio">
-                                <input type="radio" name="size" value="4">
+                            <label class="custom-radio" for="size-4">
+                                <input type="radio" id="size-4" name="size" value="4" required>
                                 <span class="radio-btn">4x4</span>
                             </label>
-                            <label class="custom-radio">
-                                <input type="radio" name="size" value="5">
+                            <label class="custom-radio" for="size-5">
+                                <input type="radio" id="size-5" name="size" value="5" required>
                                 <span class="radio-btn">5x5</span>
                             </label>
                         </div>
+                        <span class="error-message" id="error-size" role="alert" aria-live="assertive"></span>
                     </fieldset>
 
                     <!-- Estímulos -->
                     <fieldset class="control-group group-stimuli">
-                        <legend>Estímulos</legend>
-                        <div class="radio-options">
-                            <label class="custom-radio">
-                                <input type="radio" name="stimuli" value="visual" checked>
+                        <legend id="legend-stimuli">Retroalimentación</legend>
+                        <p id="help-stimuli" class="form-help">Tipo de retroalimentación durante el juego. Visual muestra animaciones, Auditivo reproduce sonidos, Ambos combina los dos.</p>
+                        <div class="radio-options" role="radiogroup" aria-labelledby="legend-stimuli">
+                            <label class="custom-radio" for="stimuli-visual">
+                                <input type="radio" id="stimuli-visual" name="stimuli" value="visual" checked required>
                                 <span class="radio-btn">Visual</span>
                             </label>
-                            <label class="custom-radio">
-                                <input type="radio" name="stimuli" value="sound">
+                            <label class="custom-radio" for="stimuli-sound">
+                                <input type="radio" id="stimuli-sound" name="stimuli" value="sound" required>
                                 <span class="radio-btn">Auditivo</span>
                             </label>
-                            <label class="custom-radio">
-                                <input type="radio" name="stimuli" value="mixed">
+                            <label class="custom-radio" for="stimuli-mixed">
+                                <input type="radio" id="stimuli-mixed" name="stimuli" value="mixed" required>
                                 <span class="radio-btn">Ambos</span>
                             </label>
                         </div>
+                        <span class="error-message" id="error-stimuli" role="alert" aria-live="assertive"></span>
                     </fieldset>
 
                     <!-- Tiempo -->
                     <fieldset class="control-group group-time">
-                        <legend>Tiempo</legend>
-                        <div class="radio-options">
-                            <label class="custom-radio">
-                                <input type="radio" name="time" value="3min">
+                        <legend id="legend-time">Límite de tiempo</legend>
+                        <p id="help-time" class="form-help">Tiempo máximo para completar el rompecabezas. 3 minutos es desafiante, 5 minutos es moderado, Libre significa sin límite de tiempo.</p>
+                        <div class="radio-options" role="radiogroup" aria-labelledby="legend-time">
+                            <label class="custom-radio" for="time-3min">
+                                <input type="radio" id="time-3min" name="time" value="3min" required>
                                 <span class="radio-btn">3 Min</span>
                             </label>
-                            <label class="custom-radio">
-                                <input type="radio" name="time" value="5min">
+                            <label class="custom-radio" for="time-5min">
+                                <input type="radio" id="time-5min" name="time" value="5min" required>
                                 <span class="radio-btn">5 Min</span>
                             </label>
-                            <label class="custom-radio">
-                                <input type="radio" name="time" value="free" checked>
+                            <label class="custom-radio" for="time-free">
+                                <input type="radio" id="time-free" name="time" value="free" checked required>
                                 <span class="radio-btn">Libre</span>
                             </label>
                         </div>
+                        <span class="error-message" id="error-time" role="alert" aria-live="assertive"></span>
                     </fieldset>
                 </form>
 
                 <!-- Panel Derecho: Previsualización -->
                 <div class="settings-preview-panel">
-                    <h3>Vista Previa</h3>
-                    <div class="preview-card" aria-label="Vista previa del tablero">
-                        <div class="preview-grid" id="preview-grid-container" style="--grid-size: 3;"></div>
-                        
-                        <div class="preview-badges">
-                            <span id="badge-difficulty" class="badge">Fácil</span>
-                            <span id="badge-time" class="badge">Libre</span>
+                    <h2 id="titulo-preview">Vista Previa</h2>
+                    <p class="sr-only">Visualización en tiempo real de cómo se verá tu tablero de rompecabezas con la configuración seleccionada.</p>
+                    <div class="preview-card" role="img" aria-labelledby="titulo-preview" aria-describedby="desc-preview">
+                        <div class="preview-grid" id="preview-grid-container" style="--grid-size: 3;" role="presentation"></div>
+
+                        <div class="preview-badges" role="status" aria-live="polite">
+                            <span id="badge-difficulty" class="badge" aria-label="Dificultad seleccionada">Fácil</span>
+                            <span id="badge-time" class="badge" aria-label="Tiempo seleccionado">Libre</span>
                         </div>
+                        <p id="desc-preview" class="sr-only">El tablero mostrará una cuadrícula con las piezas del rompecabezas según tu configuración actual.</p>
                     </div>
                 </div>
 
                 <!-- Botonera Inferior -->
-                <div class="settings-actions">
-                    <button type="button" class="btn-small btn-default" id="btn-default">Restablecer</button>
-                    <button type="button" class="btn-small btn-assist" id="btn-assist">Personalizar Asistente</button>
+                <div class="settings-actions" >
+                    <button type="button" class="btn-small btn-default" id="btn-default" aria-label="Restablecer: Vuelve a la configuración predeterminada del juego">Restablecer</button>
+                    <button type="button" class="btn-small btn-assist" id="btn-assist" aria-label="Personalizar Asistente: Cambia la apariencia de tu asistente virtual entre superhéroe, robot, mascota o héroe alternativo">Personalizar Asistente</button>
                     <!-- Este botón guardará y regresará a index.html -->
-                    <button type="button" class="btn-large btn-save" id="btn-save">Continuar</button>
+                    <button type="button" class="btn-large btn-save" id="btn-save" aria-label="Guardar y continuar: Guarda tu configuración y regresa al menú principal">Continuar</button>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Mascota con mensaje específico para Ajustes -->
-    <aside class="mascot-section" aria-labelledby="mascot-text">
-        <div class="speech-bubble" id="mascot-text" role="status">
+    <aside class="mascot-section" aria-labelledby="mascot-text" aria-hidden="true">
+        <div class="speech-bubble" id="mascot-text" role="status" aria-live="polite">
             Configura tu desafío. Recuerda: ¡tú controlas la dificultad!
         </div>
-        
+
         <!-- CORRECCIÓN: Contenedor Vectorial en lugar de <img> -->
-        <div id="global-mascot-container" class="mascot-vector-container">
+        <div id="global-mascot-container" class="mascot-vector-container" aria-hidden="true">
             <!-- Por defecto: Superhéroe (Se reemplazará via JS si hay uno guardado) -->
-            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg">
+            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg" aria-hidden="true">
                 <path d="M130,140 Q60,250 80,450 L320,450 Q340,250 270,140 Z" fill="url(#globalCapeGradient)"/>
                 <path d="M130,140 Q100,250 110,450 L140,450 Q130,300 150,140 Z" fill="#991B1B" opacity="0.4"/>
                 <path d="M270,140 Q300,250 290,450 L260,450 Q270,300 250,140 Z" fill="#991B1B" opacity="0.4"/>

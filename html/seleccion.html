@@ -14,7 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <!-- Skip link accesible por teclado -->
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+
     <!-- ========================================== -->
     <!-- 1. RECURSOS GLOBALES SVG (CRÍTICO PARA LA MASCOTA) -->
     <!-- ========================================== -->
@@ -43,84 +45,85 @@
     <div class="bg-pattern" aria-hidden="true"></div>
 
     <!-- Panel Usuario -->
-    <div class="user-info-panel">
-        <div class="info-item"><strong>Guest</strong></div>
-        <div class="info-item">Time: <span id="user-time-display">--</span></div>
+    <div class="user-info-panel" role="complementary" aria-label="Estado de la sesión" aria-hidden="true">
+        <div class="info-item"><strong>Usuario invitado</strong></div>
+        <div class="info-item">Tiempo: <span id="user-time-display">--</span></div>
         <div class="info-item">Nivel: <span id="user-level-display">--</span></div>
     </div>
 
     <!-- Contenido Principal -->
-    <main class="game-container centered-layout">
-        
+    <main class="game-container centered-layout" id="contenido-principal" tabindex="-1">
+
         <header class="page-header">
             <h1 class="title-cartoon">Selecciona tu imagen</h1>
+            <p class="sr-only">Elige la imagen que quieres usar para armar el rompecabezas. Usa Tab para navegar entre las opciones y Enter o Espacio para seleccionar.</p>
         </header>
 
         <!-- Grilla de Imágenes -->
-       <section class="selection-grid" aria-label="Galería de imágenes para el rompecabezas">
+       <section class="selection-grid" aria-labelledby="titulo-galeria">
+            <h2 id="titulo-galeria" class="sr-only">Galería de imágenes disponibles</h2>
             
             <!-- Tarjeta 1: Perrito -->
-            <button class="image-card" data-img-url="../assets/images/perro.jpg" aria-label="Seleccionar imagen de Perrito">
-                <!-- Usamos rutas relativas locales -->
-                <img src="../assets/images/perro.jpg" alt="Ilustración de un perrito tierno" onerror="this.src='https://placehold.co/400x400?text=Perro'">
-                <div class="selection-overlay">
-                    <svg class="check-icon"><use xlink:href="#icon-check"></use></svg>
+            <button class="image-card" data-img-url="../assets/images/perro.jpg" aria-label="Perrito: Ilustración de un perrito café claro tierno con collar rojo" aria-pressed="false">
+                <img src="../assets/images/perro.jpg" alt="" onerror="this.src='https://placehold.co/400x400?text=Perro'">
+                <div class="selection-overlay" aria-hidden="true">
+                    <svg class="check-icon" aria-hidden="true"><use xlink:href="#icon-check"></use></svg>
                 </div>
-                <div class="card-label"> Perrito</div>
+                <div class="card-label">Perrito</div>
             </button>
 
             <!-- Tarjeta 2: Gatito -->
-            <button class="image-card" data-img-url="../assets/images/gato.jpg" aria-label="Seleccionar imagen de Gatito">
-                <img src="../assets/images/gato.jpg" alt="Ilustración de un gatito adorable" onerror="this.src='https://placehold.co/400x400?text=Gato'">
-                <div class="selection-overlay">
-                    <svg class="check-icon"><use xlink:href="#icon-check"></use></svg>
+            <button class="image-card" data-img-url="../assets/images/gato.jpg" aria-label="Gatito: Ilustración de un gatito gris con ojos azules brillantes" aria-pressed="false">
+                <img src="../assets/images/gato.jpg" alt="" onerror="this.src='https://placehold.co/400x400?text=Gato'">
+                <div class="selection-overlay" aria-hidden="true">
+                    <svg class="check-icon" aria-hidden="true"><use xlink:href="#icon-check"></use></svg>
                 </div>
-                <div class="card-label"> Gatito</div>
+                <div class="card-label">Gatito</div>
             </button>
 
             <!-- Tarjeta 3: Paisaje -->
-            <button class="image-card" data-img-url="../assets/images/paisaje.jpg" aria-label="Seleccionar imagen de Paisaje Natural">
-                <img src="../assets/images/paisaje.jpg" alt="Paisaje natural estilo cartoon" onerror="this.src='https://placehold.co/400x400?text=Paisaje'">
-                <div class="selection-overlay">
-                    <svg class="check-icon"><use xlink:href="#icon-check"></use></svg>
+            <button class="image-card" data-img-url="../assets/images/paisaje.jpg" aria-label="Paisaje: Paisaje natural con montañas, río y flores" aria-pressed="false">
+                <img src="../assets/images/paisaje.jpg" alt="" onerror="this.src='https://placehold.co/400x400?text=Paisaje'">
+                <div class="selection-overlay" aria-hidden="true">
+                    <svg class="check-icon" aria-hidden="true"><use xlink:href="#icon-check"></use></svg>
                 </div>
-                <div class="card-label"> Paisaje</div>
+                <div class="card-label">Paisaje</div>
             </button>
 
             <!-- Tarjeta 4: Números -->
-            <button class="image-card" data-img-url="../assets/images/numeros.jpg" aria-label="Seleccionar imagen de Números Coloridos">
-                <img src="../assets/images/numeros.png" alt="Números educativos de colores" onerror="this.src='https://placehold.co/400x400?text=Numeros'">
-                <div class="selection-overlay">
-                    <svg class="check-icon"><use xlink:href="#icon-check"></use></svg>
+            <button class="image-card" data-img-url="../assets/images/numeros.jpg" aria-label="Números: Ilustración educativa de números del 1 al 9 coloridos" aria-pressed="false">
+                <img src="../assets/images/numeros.png" alt="" onerror="this.src='https://placehold.co/400x400?text=Numeros'">
+                <div class="selection-overlay" aria-hidden="true">
+                    <svg class="check-icon" aria-hidden="true"><use xlink:href="#icon-check"></use></svg>
                 </div>
-                <div class="card-label"> Números</div>
+                <div class="card-label">Números</div>
             </button>
 
             <!-- Tarjeta 5: Arte Abstracto/Colores -->
-            <button class="image-card" data-img-url="../assets/images/colores.jpg" aria-label="Seleccionar imagen de Colores y Formas">
-                <img src="../assets/images/colores.jpg" alt="Arte abstracto colorido" onerror="this.src='https://placehold.co/400x400?text=Colores'">
-                <div class="selection-overlay">
-                    <svg class="check-icon"><use xlink:href="#icon-check"></use></svg>
+            <button class="image-card" data-img-url="../assets/images/colores.jpg" aria-label="Colores: Arte abstracto con formas geométricas coloridas" aria-pressed="false">
+                <img src="../assets/images/colores.jpg" alt="" onerror="this.src='https://placehold.co/400x400?text=Colores'">
+                <div class="selection-overlay" aria-hidden="true">
+                    <svg class="check-icon" aria-hidden="true"><use xlink:href="#icon-check"></use></svg>
                 </div>
-                <div class="card-label"> Colores</div>
+                <div class="card-label">Colores</div>
             </button>
 
             <!-- Tarjeta 6: Héroe -->
-            <button class="image-card" data-img-url="../assets/images/heroe.jpg" aria-label="Seleccionar imagen de Superhéroe">
-                <img src="../assets/images/heroe.jpg" alt="Personaje superhéroe" onerror="this.src='https://placehold.co/400x400?text=Heroe'">
-                <div class="selection-overlay">
-                    <svg class="check-icon"><use xlink:href="#icon-check"></use></svg>
+            <button class="image-card" data-img-url="../assets/images/heroe.jpg" aria-label="Héroe: Superhéroe con traje azul y capa roja" aria-pressed="false">
+                <img src="../assets/images/heroe.jpg" alt="" onerror="this.src='https://placehold.co/400x400?text=Heroe'">
+                <div class="selection-overlay" aria-hidden="true">
+                    <svg class="check-icon" aria-hidden="true"><use xlink:href="#icon-check"></use></svg>
                 </div>
-                <div class="card-label"> Héroe</div>
+                <div class="card-label">Héroe</div>
             </button>
 
         </section>
 
         <!-- Botonera -->
         <div class="actions-container">
-            <button class="btn btn-large btn-return" id="btn-back">Regresar</button>
+            <button class="btn btn-large btn-return" id="btn-back" aria-label="Regresar">Regresar</button>
             <!-- El botón Continuar está deshabilitado por defecto -->
-            <button id="btn-continue" class="btn btn-large btn-primary" disabled aria-disabled="true">
+            <button id="btn-continue" class="btn btn-large btn-primary" disabled aria-disabled="true" aria-label="Continuar (se activará al seleccionar una imagen)">
                 Continuar
             </button>
         </div>
@@ -128,11 +131,11 @@
     </main>
 
     <!-- Asistente Virtual -->
-    <aside class="mascot-section" aria-labelledby="mascot-text">
-        <div class="speech-bubble" id="mascot-text" role="status">
+    <aside class="mascot-section">
+        <div class="speech-bubble" id="mascot-text" role="status" aria-live="polite">
             ¡Elige la imagen que más te guste para jugar!
         </div>
-        <div id="global-mascot-container" class="mascot-vector-container">
+        <div id="global-mascot-container" class="mascot-vector-container" aria-hidden="true">
             <!-- El JS llenará esto con tu avatar personalizado -->
         </div>
     </aside>

@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Skip link accesible por teclado -->
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
 
     <!-- RECURSOS GLOBALES SVG (Para colores consistentes) -->
     <svg width="0" height="0" style="position: absolute; overflow: hidden;" aria-hidden="true">
@@ -29,61 +31,66 @@
 
     <div class="bg-pattern" aria-hidden="true"></div>
 
-    <div class="user-info-panel" role="complementary">
-        <div class="info-item"><strong>Guest</strong></div>
-        <div class="info-item">Time: <span id="user-time-display">--</span></div>
+    <div class="user-info-panel" aria-hidden="true">
+        <div class="info-item"><strong>Usuario invitado</strong></div>
+        <div class="info-item">Tiempo: <span id="user-time-display">--</span></div>
         <div class="info-item">Nivel: <span id="user-level-display">--</span></div>
     </div>
 
-    <main class="game-container">
-        <section id="review-screen" class="screen-section active">
-            <h1 class="settings-title">¡Prepárate!</h1>
+    <main class="game-container" id="contenido-principal" tabindex="-1">
+        <section id="review-screen" class="screen-section active" aria-labelledby="titulo-revision">
+            <h1 id="titulo-revision" class="settings-title">¡Prepárate!</h1>
+            <p class="sr-only">Esta pantalla muestra un resumen de la configuración de tu rompecabezas antes de comenzar a jugar. Revisa la dificultad, tamaño, estímulos y tiempo límite. Usa Tab para navegar por los detalles y los botones.</p>
 
             <div class="review-layout">
-                <div class="review-header">
+                <div class="review-header" role="region" aria-label="Encabezado de resumen">
                     <h2>Resumen de Misión</h2>
                     <p>Revisa los detalles antes de comenzar</p>
                 </div>
 
                 <!-- Tarjeta de Detalles -->
-                <div class="review-card">
-                    <div class="review-item">
-                        <div class="review-icon icon-diff">🧩</div>
+                <div class="review-card" role="list" aria-label="Detalles de configuración del juego">
+                    <div class="review-item" role="listitem">
+                        <div class="review-icon" aria-hidden="true">🧩</div>
                         <div class="review-content">
                             <span class="review-label">Dificultad</span>
-                            <span class="review-value" id="summary-difficulty">Cargando...</span>
+                            <span class="review-value" id="summary-difficulty" aria-live="polite">Cargando...</span>
                         </div>
+                        <p class="sr-only">La dificultad determina cuántas piezas tendrá tu rompecabezas. Fácil tiene menos piezas, Medio tiene una cantidad moderada, y Difícil tiene muchas piezas pequeñas.</p>
                     </div>
 
-                    <div class="review-item">
-                        <div class="review-icon icon-size">📏</div>
+                    <div class="review-item" role="listitem">
+                        <div class="review-icon" aria-hidden="true">📏</div>
                         <div class="review-content">
                             <span class="review-label">Tamaño</span>
-                            <span class="review-value" id="summary-size">Cargando...</span>
+                            <span class="review-value" id="summary-size" aria-live="polite">Cargando...</span>
                         </div>
+                        <p class="sr-only">El tamaño indica las dimensiones del área de juego donde colocarás las piezas del rompecabezas. Puede ser pequeño, mediano o grande.</p>
                     </div>
 
-                    <div class="review-item">
-                        <div class="review-icon icon-stimuli">👁️</div>
+                    <div class="review-item" role="listitem">
+                        <div class="review-icon" aria-hidden="true">👁️</div>
                         <div class="review-content">
                             <span class="review-label">Estímulos</span>
-                            <span class="review-value" id="summary-stimuli">Cargando...</span>
+                            <span class="review-value" id="summary-stimuli" aria-live="polite">Cargando...</span>
                         </div>
+                        <p class="sr-only">Los estímulos son efectos visuales o auditivos adicionales que pueden ayudarte o desafiarte durante el juego, como animaciones, sonidos o efectos de luz.</p>
                     </div>
 
-                    <div class="review-item">
-                        <div class="review-icon icon-time">⏳</div>
+                    <div class="review-item" role="listitem">
+                        <div class="review-icon" aria-hidden="true">⏳</div>
                         <div class="review-content">
                             <span class="review-label">Tiempo</span>
-                            <span class="review-value" id="summary-time">Cargando...</span>
+                            <span class="review-value" id="summary-time" aria-live="polite">Cargando...</span>
                         </div>
+                        <p class="sr-only">El tiempo indica si tienes un límite de tiempo para completar el rompecabezas. Puede ser libre (sin límite), cronometrado o contrarreloj.</p>
                     </div>
                 </div>
 
                 <!-- Botones -->
-                <div class="settings-actions">
-                    <button type="button" class="btn-large btn-cancel" id="btn-back">Regresar</button>
-                    <button type="button" class="btn-large btn-save" id="btn-start">¡Comenzar!</button>
+                <div class="settings-actions" role="navigation" aria-label="Navegación entre pantallas">
+                    <button type="button" class="btn-large btn-cancel" id="btn-back" aria-label="Regresar: Vuelve a la pantalla anterior de selección de imagen para cambiar tu elección o ajustes">Regresar</button>
+                    <button type="button" class="btn-large btn-save" id="btn-start" aria-label="Comenzar a jugar: Inicia el juego del rompecabezas con la configuración mostrada en el resumen. El cronómetro comenzará si configuraste tiempo límite.">¡Comenzar!</button>
                 </div>
             </div>
         </section>
@@ -91,10 +98,10 @@
 
     <!-- Mascota -->
     <aside class="mascot-section">
-        <div class="speech-bubble" role="status">
+        <div class="speech-bubble" id="mascot-text" role="status" aria-live="polite">
             ¡Todo listo, héroe! ¿Empezamos la aventura?
         </div>
-        <div id="global-mascot-container" class="mascot-vector-container">
+        <div id="global-mascot-container" class="mascot-vector-container" aria-hidden="true">
             <!-- Se llena con JS -->
         </div>
     </aside>

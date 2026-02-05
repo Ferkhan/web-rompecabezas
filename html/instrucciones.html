@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Skip link accesible por teclado -->
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
 
     <!-- RECURSOS GLOBALES SVG (CRÍTICO: Para que funcione la Mascota y los colores) -->
     <svg width="0" height="0" style="position: absolute; overflow: hidden;" aria-hidden="true">
@@ -32,20 +34,21 @@
     <div class="bg-pattern" aria-hidden="true"></div>
 
     <!-- Panel de Información -->
-    <div class="user-info-panel" id="user-info-panel" role="complementary">
-        <div class="info-item"><strong>Guest</strong></div>
-        <div class="info-item">Time: <span id="user-time-display">Free</span></div>
+    <div class="user-info-panel" id="user-info-panel" aria-hidden="true">
+        <div class="info-item"><strong>Usuario invitado</strong></div>
+        <div class="info-item">Tiempo: <span id="user-time-display">Libre</span></div>
         <div class="info-item">Nivel: <span id="user-level-display">Fácil</span></div>
     </div>
 
-    <main class="game-container">
-        <section id="instructions-screen" class="screen-section active">
-            <h1 class="settings-title">Instrucciones del Juego</h1>
+    <main class="game-container" id="contenido-principal" tabindex="-1">
+        <section id="instructions-screen" class="screen-section active" aria-labelledby="titulo-instrucciones">
+            <h1 id="titulo-instrucciones" class="settings-title">Instrucciones del Juego</h1>
+            <p class="sr-only">Esta sección te enseñará cómo jugar al rompecabezas. Aprenderás a arrastrar y rotar las piezas para completar el puzzle. Usa Tab para navegar por las instrucciones.</p>
 
             <div class="instructions-layout">
-                
+
                 <!-- Texto de Bienvenida -->
-                <div class="instructions-text-card">
+                <div class="instructions-text-card" role="region" aria-label="Mensaje de bienvenida">
                     <p>
                         ¡Bienvenido al juego! Arrastra y suelta las piezas en sus lugares correctos.
                         Une las formas y diseños para completar el rompecabezas.
@@ -53,14 +56,14 @@
                 </div>
 
                 <!-- Contenedor de Pasos (Tarjetas Visuales) -->
-                <div class="steps-container">
-                    
+                <div class="steps-container" role="list" aria-label="Pasos para jugar">
+
                     <!-- Tarjeta 1: Arrastrar (Estilo Azul) -->
-                    <div class="step-card drag-step">
-                        <div class="step-number">1</div>
-                        <div class="step-icon-container">
+                    <div class="step-card drag-step" role="listitem">
+                        <div class="step-number" aria-label="Paso número uno">1</div>
+                        <div class="step-icon-container" aria-hidden="true">
                             <!-- SVG: Pieza moviéndose y mano -->
-                            <svg viewBox="0 0 100 100" class="step-svg drag-animation">
+                            <svg viewBox="0 0 100 100" class="step-svg drag-animation" aria-hidden="true">
                                 <!-- Pieza de puzzle -->
                                 <path d="M20,30 L50,30 L50,20 Q60,10 70,20 L70,30 L80,30 L80,70 L20,70 Z" fill="#4ecdc4" stroke="#2980b9" stroke-width="2" />
                                 <circle cx="50" cy="50" r="5" fill="#fff" opacity="0.5"/>
@@ -70,14 +73,15 @@
                         </div>
                         <h3>Arrastra</h3>
                         <p>Lleva las piezas a su lugar.</p>
+                        <p class="sr-only">Primer paso: Haz clic sobre una pieza del rompecabezas y mantén presionado el botón del ratón o tu dedo en la pantalla táctil. Luego mueve la pieza arrastrándola hasta su posición correcta en el tablero. También puedes usar las teclas de flecha después de seleccionar una pieza con Tab y Enter.</p>
                     </div>
 
                     <!-- Tarjeta 2: Rotar (Estilo Amarillo) -->
-                    <div class="step-card rotate-step">
-                        <div class="step-number">2</div>
-                        <div class="step-icon-container">
+                    <div class="step-card rotate-step" role="listitem">
+                        <div class="step-number" aria-label="Paso número dos">2</div>
+                        <div class="step-icon-container" aria-hidden="true">
                             <!-- SVG: Pieza girando -->
-                            <svg viewBox="0 0 100 100" class="step-svg rotate-animation">
+                            <svg viewBox="0 0 100 100" class="step-svg rotate-animation" aria-hidden="true">
                                 <!-- Pieza -->
                                 <rect x="30" y="30" width="40" height="40" rx="5" fill="#ffd740" stroke="#f39c12" stroke-width="2" />
                                 <!-- Flecha de rotación -->
@@ -88,12 +92,13 @@
                         </div>
                         <h3>Toca</h3>
                         <p>Haz clic para girar 90°.</p>
+                        <p class="sr-only">Segundo paso: Si una pieza no encaja en su posición actual, puedes rotarla haciendo clic o tocando sobre ella. Cada clic la girará 90 grados en sentido horario. Con el teclado, selecciona la pieza con Tab y presiona la tecla R o la barra espaciadora para rotarla.</p>
                     </div>
                 </div>
 
                 <!-- Botón Regresar (Rojo) -->
-                <div class="settings-actions" style="justify-content: center; width: 100%;">
-                    <button type="button" class="btn btn-play" id="btn-back-home" style="padding: 15px 60px;">
+                <div class="settings-actions" role="navigation" aria-label="Navegación" style="justify-content: center; width: 100%;">
+                    <button type="button" class="btn btn-play" id="btn-back-home" style="padding: 15px 60px;" aria-label="Regresar al menú principal: Vuelve a la pantalla de inicio del juego donde puedes elegir jugar, ver ajustes o salir">
                         <span>Regresar</span>
                     </button>
                 </div>
@@ -102,12 +107,12 @@
     </main>
 
     <!-- Mascota con vector -->
-    <aside class="mascot-section" aria-labelledby="mascot-text">
-        <div class="speech-bubble" id="mascot-text" role="status">
+    <aside class="mascot-section">
+        <div class="speech-bubble" id="mascot-text" role="status" aria-live="polite">
             ¿Ves? ¡Es muy fácil! Diviértete y aprende mientras juegas.
         </div>
         <!-- Contenedor vectorial -->
-        <div id="global-mascot-container" class="mascot-vector-container">
+        <div id="global-mascot-container" class="mascot-vector-container" aria-hidden="true">
             <!-- El JS llenará esto automáticamente -->
         </div>
     </aside>

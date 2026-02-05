@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Skip link accesible por teclado -->
+    <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
 
     <!-- ========================================== -->
     <!-- 1. RECURSOS GLOBALES SVG (DEFINICIÓN DE COLORES) -->
@@ -40,23 +42,23 @@
     <!-- ========================================== -->
     <!-- 2. CABECERA SUPERIOR (NUEVO DISEÑO) -->
     <!-- ========================================== -->
-    <header class="game-header-bar">
+    <header class="game-header-bar" role="banner" aria-label="Información del juego">
         <!-- Botón Hamburguesa (Abre menú lateral) -->
-        <button id="btn-menu-toggle" class="btn-icon-menu" aria-label="Abrir menú de opciones">
-            <span class="hamburger-icon" style="font-size: 2rem;">☰</span>
+        <button id="btn-menu-toggle" class="btn-icon-menu" aria-label="Abrir menú de opciones" aria-expanded="false">
+            <span class="hamburger-icon" style="font-size: 2rem;" aria-hidden="true">☰</span>
         </button>
 
         <!-- Información Central: Misión y Tiempo -->
         <div class="game-info-center">
             <h2 id="game-instruction" style="margin:0; font-size:1rem; color:#666; text-transform:uppercase;">Misión</h2>
-            <div class="timer-badge">
-                <span class="icon">⏱️</span>
+            <div class="timer-badge" role="timer" aria-live="polite" aria-atomic="true" aria-label="Cronómetro">
+                <span class="icon" aria-hidden="true">⏱️</span>
                 <span id="timer">00:00</span>
             </div>
         </div>
 
         <!-- Contador de Movimientos -->
-        <div class="score-badge">
+        <div class="score-badge" role="status" aria-live="polite" aria-label="Movimientos realizados">
             <span>Movs:</span> <strong id="move-count">0</strong>
         </div>
     </header>
@@ -64,39 +66,41 @@
     <!-- ========================================== -->
     <!-- 3. MENÚ LATERAL DESPLEGABLE (OCULTO) -->
     <!-- ========================================== -->
-    <div id="side-menu-overlay" class="menu-overlay hidden">
-        <aside class="side-menu-panel">
+    <div id="side-menu-overlay" class="menu-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="menu-title" aria-hidden="true">
+        <div class="side-menu-panel">
             <div class="menu-header">
-                <h3>Opciones</h3>
-                <button id="btn-menu-close" class="btn-close-menu" style="background:none; border:none; font-size:1.5rem; cursor:pointer;">✕</button>
+                <h3 id="menu-title">Opciones del Juego</h3>
+                <button id="btn-menu-close" class="btn-close-menu" style="background:none; border:none; font-size:1.5rem; cursor:pointer;" aria-label="Cerrar menú">✕</button>
             </div>
-            <nav class="menu-controls">
-                <button id="btn-pause" class="btn-menu-item btn-pause">
-                    <span class="icon">⏸️</span> Pausar Juego
+            <nav class="menu-controls" aria-label="Opciones">
+                <button id="btn-pause" class="btn-menu-item btn-pause" aria-label="Pausar juego">
+                    <span aria-hidden="true">⏸️</span> Pausar Juego
                 </button>
-                <button id="btn-back-menu" class="btn-menu-item btn-back">
-                    <span class="icon">↩️</span> Volver a Revisión
+                <button id="btn-back-menu" class="btn-menu-item btn-back" aria-label="Volver a revisión">
+                    <span aria-hidden="true">↩️</span> Volver a Revisión
                 </button>
-                <button id="btn-cancel-game" class="btn-menu-item btn-cancel-game">
-                    <span class="icon">❌</span> Salir al Inicio
+                <button id="btn-cancel-game" class="btn-menu-item btn-cancel-game" aria-label="Salir al menú principal">
+                    <span aria-hidden="true">❌</span> Salir al Inicio
                 </button>
             </nav>
-        </aside>
+        </div>
     </div>
 
     <!-- ========================================== -->
     <!-- 4. ÁREA DE JUEGO PRINCIPAL -->
     <!-- ========================================== -->
-    <main class="game-container game-layout-centered">
-        
+    <main class="game-container game-layout-centered" id="contenido-principal" tabindex="-1">
+        <p class="sr-only">Área del juego. Arrastra las piezas con el ratón o usa Tab para navegar y Enter para seleccionar. Presiona R para rotar.</p>
+
         <!-- Tablero Maximizado -->
-        <section class="board-area">
-            
+        <section class="board-area" aria-labelledby="board-title">
+            <h2 id="board-title" class="sr-only">Tablero del rompecabezas</h2>
+
             <!-- Espacio donde vive el rompecabezas -->
-            <div id="game-workspace" class="game-workspace">
+            <div id="game-workspace" class="game-workspace" role="application" aria-label="Tablero de juego del rompecabezas">
                 <!-- Capa inferior: Slots del tablero -->
                 <div id="puzzle-board" class="puzzle-board"></div>
-                
+
                 <!-- Capa superior: Piezas desordenadas (para drag & drop) -->
                 <div id="scattered-layer" class="scattered-layer"></div>
             </div>
@@ -104,12 +108,12 @@
             <!-- Botonera Inferior -->
             <div class="game-controls-bottom">
                 <!-- Botón Ayuda (Inicialmente oculto, JS lo muestra si tardas) -->
-                <button id="btn-help" class="btn-help hidden" aria-label="Pedir ayuda">
-                    <span>💡</span> Pista
+                <button id="btn-help" class="btn-help hidden" aria-label="Pedir pista">
+                    <span aria-hidden="true">💡</span> Pista
                 </button>
-                
+
                 <!-- Botón Principal -->
-                <button id="btn-check" class="btn-check">
+                <button id="btn-check" class="btn-check" aria-label="Comprobar solución">
                     Comprobar Solución
                 </button>
             </div>
@@ -122,27 +126,27 @@
     <!-- ========================================== -->
 
     <!-- Asistente Virtual -->
-    <aside class="mascot-section game-mascot">
+    <aside class="mascot-section game-mascot" aria-hidden="true">
         <div class="speech-bubble" id="mascot-text" role="status" aria-live="polite">
             ¡Prepárate para el desafío!
         </div>
-        <div id="global-mascot-container" class="mascot-vector-container">
+        <div id="global-mascot-container" class="mascot-vector-container" aria-hidden="true">
             <!-- El JS llenará esto con el avatar seleccionado -->
         </div>
     </aside>
 
     <!-- Modal de Victoria -->
-    <div id="victory-modal" class="modal-overlay hidden">
+    <div id="victory-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="victory-title" aria-hidden="true">
         <div class="modal-content">
-            <h2>¡Felicidades Héroe! 🎉</h2>
-            <p>¡Completaste el rompecabezas!</p>
+            <h2 id="victory-title">¡Felicidades Héroe! <span aria-hidden="true">🎉</span></h2>
+            <p id="victory-description">¡Completaste el rompecabezas!</p>
             <div class="modal-stats">
                 <p>Tiempo: <span id="final-time">00:00</span></p>
                 <p>Movimientos: <span id="final-moves">0</span></p>
             </div>
             <div class="modal-actions">
-                <button id="btn-replay" class="btn btn-large btn-save">Jugar de Nuevo</button>
-                <button id="btn-menu" class="btn btn-large btn-return">Menú Principal</button>
+                <button id="btn-replay" class="btn btn-large btn-save" aria-label="Jugar de nuevo">Jugar de Nuevo</button>
+                <button id="btn-menu" class="btn btn-large btn-return" aria-label="Ir al menú principal">Menú Principal</button>
             </div>
         </div>
     </div>
