@@ -1,28 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rompecabezas - Instrucciones</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
     <svg width="0" height="0" style="position: absolute; overflow: hidden;" aria-hidden="true">
         <defs>
-            <linearGradient id="globalSuitGradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1"/><stop offset="50%" style="stop-color:#2563EB;stop-opacity:1"/><stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalCapeGradient" x1="50%" y1="0%" x2="50%" y2="100%"><stop offset="0%" style="stop-color:#EF4444;stop-opacity:1"/><stop offset="100%" style="stop-color:#991B1B;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalSkinGradient" x1="0%" y1="0%" x2="100%" y2="50%"><stop offset="0%" style="stop-color:#FFE4C4;stop-opacity:1"/><stop offset="100%" style="stop-color:#F5C19B;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalGoldGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#FCD34D;stop-opacity:1"/><stop offset="50%" style="stop-color:#F59E0B;stop-opacity:1"/><stop offset="100%" style="stop-color:#B45309;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalMetalGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#E5E7EB;stop-opacity:1"/><stop offset="50%" style="stop-color:#9CA3AF;stop-opacity:1"/><stop offset="100%" style="stop-color:#4B5563;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalBlueEye" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1"/><stop offset="100%" style="stop-color:#2563EB;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalDogFur" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1"/><stop offset="100%" style="stop-color:#B45309;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalAltSuit" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#10B981;stop-opacity:1"/><stop offset="100%" style="stop-color:#047857;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalAltCape" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1"/><stop offset="100%" style="stop-color:#5B21B6;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalSkinGradientAlt" x1="0%" y1="0%" x2="100%" y2="50%"><stop offset="0%" style="stop-color:#FFE4C4;stop-opacity:1"/><stop offset="100%" style="stop-color:#F5C19B;stop-opacity:1"/></linearGradient>
+            <linearGradient id="globalSuitGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#2563EB;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalCapeGradient" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#991B1B;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalSkinGradient" x1="0%" y1="0%" x2="100%" y2="50%">
+                <stop offset="0%" style="stop-color:#FFE4C4;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#F5C19B;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalGoldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FCD34D;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#F59E0B;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#B45309;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalMetalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#E5E7EB;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#9CA3AF;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#4B5563;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalBlueEye" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalDogFur" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#B45309;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalAltSuit" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#047857;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalAltCape" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#5B21B6;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalSkinGradientAlt" x1="0%" y1="0%" x2="100%" y2="50%">
+                <stop offset="0%" style="stop-color:#FFE4C4;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#F5C19B;stop-opacity:1" />
+            </linearGradient>
         </defs>
     </svg>
 
@@ -53,9 +88,11 @@
                         <div class="step-number" aria-hidden="true">1</div>
                         <div class="step-icon-container" aria-hidden="true">
                             <svg viewBox="0 0 100 100" class="step-svg drag-animation" aria-hidden="true">
-                                <path d="M20,30 L50,30 L50,20 Q60,10 70,20 L70,30 L80,30 L80,70 L20,70 Z" fill="#4ecdc4" stroke="#2980b9" stroke-width="2" />
-                                <circle cx="50" cy="50" r="5" fill="#fff" opacity="0.5"/>
-                                <path class="hand" d="M60,60 L50,50 L55,45 L70,60 L60,80 L50,75 Z" fill="#ff6b6b" stroke="#c0392b" stroke-width="2" />
+                                <path d="M20,30 L50,30 L50,20 Q60,10 70,20 L70,30 L80,30 L80,70 L20,70 Z" fill="#4ecdc4"
+                                    stroke="#2980b9" stroke-width="2" />
+                                <circle cx="50" cy="50" r="5" fill="#fff" opacity="0.5" />
+                                <path class="hand" d="M60,60 L50,50 L55,45 L70,60 L60,80 L50,75 Z" fill="#ff6b6b"
+                                    stroke="#c0392b" stroke-width="2" />
                             </svg>
                         </div>
                         <h2>Arrastra</h2>
@@ -66,9 +103,12 @@
                         <div class="step-number" aria-hidden="true">2</div>
                         <div class="step-icon-container" aria-hidden="true">
                             <svg viewBox="0 0 100 100" class="step-svg rotate-animation" aria-hidden="true">
-                                <rect x="30" y="30" width="40" height="40" rx="5" fill="#ffd740" stroke="#f39c12" stroke-width="2" />
-                                <path d="M80,50 A30,30 0 0,1 50,80" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round" />
-                                <path class="touch" d="M50,50 L40,40 L45,35 L60,50 L50,70 L40,65 Z" fill="#333" opacity="0.3"/>
+                                <rect x="30" y="30" width="40" height="40" rx="5" fill="#ffd740" stroke="#f39c12"
+                                    stroke-width="2" />
+                                <path d="M80,50 A30,30 0 0,1 50,80" fill="none" stroke="#333" stroke-width="4"
+                                    stroke-linecap="round" />
+                                <path class="touch" d="M50,50 L40,40 L45,35 L60,50 L50,70 L40,65 Z" fill="#333"
+                                    opacity="0.3" />
                             </svg>
                         </div>
                         <h2>Toca</h2>
@@ -77,7 +117,8 @@
                 </div>
 
                 <div class="settings-actions" style="justify-content: center; width: 100%;">
-                    <button type="button" class="btn btn-play" id="btn-back-home" style="padding: 15px 60px;" aria-label="Regresar al menú principal">
+                    <button type="button" class="btn btn-play" id="btn-back-home" style="padding: 15px 60px;"
+                        aria-label="Regresar al menú principal">
                         <span>Regresar</span>
                     </button>
                 </div>
@@ -86,61 +127,71 @@
     </main>
 
     <aside class="mascot-section" role="complementary" aria-label="Asistente virtual del juego">
-        <div class="speech-bubble" id="mascot-text" role="status" aria-live="polite" tabindex="0" aria-label="Mensaje del asistente: ¿Ves? ¡Es muy fácil! Diviértete y aprende mientras juegas.">
+        <div class="speech-bubble" id="mascot-text" role="status" aria-live="polite" tabindex="0"
+            aria-label="Mensaje del asistente: ¿Ves? ¡Es muy fácil! Diviértete y aprende mientras juegas.">
             ¿Ves? ¡Es muy fácil! Diviértete y aprende mientras juegas.
         </div>
         <div id="global-mascot-container" class="mascot-vector-container" aria-hidden="true">
             <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg" aria-hidden="true">
-                <path d="M130,140 Q60,250 80,450 L320,450 Q340,250 270,140 Z" fill="url(#globalCapeGradient)"/>
-                <path d="M130,140 Q100,250 110,450 L140,450 Q130,300 150,140 Z" fill="#991B1B" opacity="0.4"/>
-                <path d="M270,140 Q300,250 290,450 L260,450 Q270,300 250,140 Z" fill="#991B1B" opacity="0.4"/>
+                <path d="M130,140 Q60,250 80,450 L320,450 Q340,250 270,140 Z" fill="url(#globalCapeGradient)" />
+                <path d="M130,140 Q100,250 110,450 L140,450 Q130,300 150,140 Z" fill="#991B1B" opacity="0.4" />
+                <path d="M270,140 Q300,250 290,450 L260,450 Q270,300 250,140 Z" fill="#991B1B" opacity="0.4" />
                 <g transform="translate(0, -10)">
-                    <path d="M165,280 Q150,350 155,400 L160,450 L195,450 L198,330 L190,280 Z" fill="url(#globalSuitGradient)"/>
-                    <path d="M235,280 Q250,350 245,400 L240,450 L205,450 L202,330 L210,280 Z" fill="url(#globalSuitGradient)"/>
-                    <path d="M158,380 L197,380 L195,450 L160,450 Z" fill="#DC2626"/>
-                    <path d="M158,380 L178,400 L197,380" fill="#B91C1C"/>
-                    <path d="M242,380 L203,380 L205,450 L240,450 Z" fill="#DC2626"/>
-                    <path d="M242,380 L222,400 L203,380" fill="#B91C1C"/>
+                    <path d="M165,280 Q150,350 155,400 L160,450 L195,450 L198,330 L190,280 Z"
+                        fill="url(#globalSuitGradient)" />
+                    <path d="M235,280 Q250,350 245,400 L240,450 L205,450 L202,330 L210,280 Z"
+                        fill="url(#globalSuitGradient)" />
+                    <path d="M158,380 L197,380 L195,450 L160,450 Z" fill="#DC2626" />
+                    <path d="M158,380 L178,400 L197,380" fill="#B91C1C" />
+                    <path d="M242,380 L203,380 L205,450 L240,450 Z" fill="#DC2626" />
+                    <path d="M242,380 L222,400 L203,380" fill="#B91C1C" />
                 </g>
-                <path d="M165,270 L235,270 L235,290 L210,320 L190,320 L165,290 Z" fill="#1E40AF"/>
-                <path d="M140,140 L260,140 L250,200 L235,280 L165,280 L150,200 Z" fill="url(#globalSuitGradient)"/>
-                <path d="M150,180 Q200,210 250,180 Q200,230 150,180" fill="#172554" opacity="0.2"/>
-                <path d="M200,180 L200,220" stroke="#172554" stroke-width="2" opacity="0.2"/>
-                <path d="M185,230 L215,230 L210,245 L190,245 Z" fill="#172554" opacity="0.15"/>
-                <path d="M188,250 L212,250 L210,265 L190,265 Z" fill="#172554" opacity="0.15"/>
-                <rect x="165" y="270" width="70" height="15" fill="url(#globalGoldGradient)" rx="2"/>
-                <circle cx="200" cy="277" r="12" fill="url(#globalGoldGradient)" stroke="#B45309" stroke-width="2"/>
-                <path d="M195,272 L200,282 L205,272" fill="none" stroke="#B45309" stroke-width="2"/>
-                <path d="M140,145 Q110,145 105,180 Q100,210 120,225" fill="none" stroke="url(#globalSkinGradient)" stroke-width="28" stroke-linecap="round"/>
-                <circle cx="140" cy="150" r="22" fill="url(#globalSuitGradient)"/>
-                <path d="M260,145 Q290,145 295,180 Q300,210 280,225" fill="none" stroke="url(#globalSkinGradient)" stroke-width="28" stroke-linecap="round"/>
-                <circle cx="260" cy="150" r="22" fill="url(#globalSuitGradient)"/>
-                <circle cx="120" cy="225" r="16" fill="#DC2626"/>
-                <circle cx="280" cy="225" r="16" fill="#DC2626"/>
-                <path d="M110,215 L130,215 L125,235 L115,235 Z" fill="#991B1B" opacity="0.5"/>
-                <path d="M270,215 L290,215 L285,235 L275,235 Z" fill="#991B1B" opacity="0.5"/>
-                <path d="M185,130 L215,130 L215,150 L185,150 Z" fill="#F5C19B"/>
-                <path d="M185,145 Q200,155 215,145" fill="none" stroke="#E5B085" stroke-width="2"/>
-                <path d="M175,80 L225,80 L225,100 Q225,135 200,135 Q175,135 175,100 Z" fill="url(#globalSkinGradient)"/>
-                <ellipse cx="172" cy="100" rx="5" ry="8" fill="url(#globalSkinGradient)"/>
-                <ellipse cx="228" cy="100" rx="5" ry="8" fill="url(#globalSkinGradient)"/>
-                <path d="M175,80 L225,80 L225,95 Q225,115 200,115 Q175,115 175,95 Z" fill="#2563EB"/>
-                <path d="M200,80 L200,90 L185,90" fill="none" stroke="#1D4ED8" stroke-width="1" opacity="0.5"/>
-                <path d="M180,92 Q190,88 198,92 L196,98 L182,98 Z" fill="white"/>
-                <path d="M202,92 Q210,88 220,92 L218,98 L204,98 Z" fill="white"/>
-                <path d="M200,105 L196,115 L204,115 Z" fill="#E5B085" opacity="0.6"/>
-                <path d="M190,125 Q200,128 210,125" fill="none" stroke="#A85D36" stroke-width="2" stroke-linecap="round"/>
-                <path d="M192,128 L208,128" fill="none" stroke="#D69E76" stroke-width="1" opacity="0.5"/>
-                <path d="M172,80 Q165,60 180,50 Q200,35 220,50 Q235,60 228,80 L225,80 Q200,60 175,80 Z" fill="#111827"/>
-                <path d="M220,50 Q230,40 225,60" fill="none" stroke="#1F2937" stroke-width="2"/>
-                <path d="M190,165 L210,165 L200,205 Z" fill="url(#globalGoldGradient)" stroke="#B45309" stroke-width="1"/>
-                <path d="M194,170 L206,170 L200,195 Z" fill="#FEF3C7" opacity="0.4"/>
-                <ellipse cx="260" cy="145" rx="10" ry="5" fill="white" opacity="0.2" transform="rotate(-45 260 145)"/>
-                <ellipse cx="140" cy="145" rx="10" ry="5" fill="white" opacity="0.2" transform="rotate(45 140 145)"/>
+                <path d="M165,270 L235,270 L235,290 L210,320 L190,320 L165,290 Z" fill="#1E40AF" />
+                <path d="M140,140 L260,140 L250,200 L235,280 L165,280 L150,200 Z" fill="url(#globalSuitGradient)" />
+                <path d="M150,180 Q200,210 250,180 Q200,230 150,180" fill="#172554" opacity="0.2" />
+                <path d="M200,180 L200,220" stroke="#172554" stroke-width="2" opacity="0.2" />
+                <path d="M185,230 L215,230 L210,245 L190,245 Z" fill="#172554" opacity="0.15" />
+                <path d="M188,250 L212,250 L210,265 L190,265 Z" fill="#172554" opacity="0.15" />
+                <rect x="165" y="270" width="70" height="15" fill="url(#globalGoldGradient)" rx="2" />
+                <circle cx="200" cy="277" r="12" fill="url(#globalGoldGradient)" stroke="#B45309" stroke-width="2" />
+                <path d="M195,272 L200,282 L205,272" fill="none" stroke="#B45309" stroke-width="2" />
+                <path d="M140,145 Q110,145 105,180 Q100,210 120,225" fill="none" stroke="url(#globalSkinGradient)"
+                    stroke-width="28" stroke-linecap="round" />
+                <circle cx="140" cy="150" r="22" fill="url(#globalSuitGradient)" />
+                <path d="M260,145 Q290,145 295,180 Q300,210 280,225" fill="none" stroke="url(#globalSkinGradient)"
+                    stroke-width="28" stroke-linecap="round" />
+                <circle cx="260" cy="150" r="22" fill="url(#globalSuitGradient)" />
+                <circle cx="120" cy="225" r="16" fill="#DC2626" />
+                <circle cx="280" cy="225" r="16" fill="#DC2626" />
+                <path d="M110,215 L130,215 L125,235 L115,235 Z" fill="#991B1B" opacity="0.5" />
+                <path d="M270,215 L290,215 L285,235 L275,235 Z" fill="#991B1B" opacity="0.5" />
+                <path d="M185,130 L215,130 L215,150 L185,150 Z" fill="#F5C19B" />
+                <path d="M185,145 Q200,155 215,145" fill="none" stroke="#E5B085" stroke-width="2" />
+                <path d="M175,80 L225,80 L225,100 Q225,135 200,135 Q175,135 175,100 Z"
+                    fill="url(#globalSkinGradient)" />
+                <ellipse cx="172" cy="100" rx="5" ry="8" fill="url(#globalSkinGradient)" />
+                <ellipse cx="228" cy="100" rx="5" ry="8" fill="url(#globalSkinGradient)" />
+                <path d="M175,80 L225,80 L225,95 Q225,115 200,115 Q175,115 175,95 Z" fill="#2563EB" />
+                <path d="M200,80 L200,90 L185,90" fill="none" stroke="#1D4ED8" stroke-width="1" opacity="0.5" />
+                <path d="M180,92 Q190,88 198,92 L196,98 L182,98 Z" fill="white" />
+                <path d="M202,92 Q210,88 220,92 L218,98 L204,98 Z" fill="white" />
+                <path d="M200,105 L196,115 L204,115 Z" fill="#E5B085" opacity="0.6" />
+                <path d="M190,125 Q200,128 210,125" fill="none" stroke="#A85D36" stroke-width="2"
+                    stroke-linecap="round" />
+                <path d="M192,128 L208,128" fill="none" stroke="#D69E76" stroke-width="1" opacity="0.5" />
+                <path d="M172,80 Q165,60 180,50 Q200,35 220,50 Q235,60 228,80 L225,80 Q200,60 175,80 Z"
+                    fill="#111827" />
+                <path d="M220,50 Q230,40 225,60" fill="none" stroke="#1F2937" stroke-width="2" />
+                <path d="M190,165 L210,165 L200,205 Z" fill="url(#globalGoldGradient)" stroke="#B45309"
+                    stroke-width="1" />
+                <path d="M194,170 L206,170 L200,195 Z" fill="#FEF3C7" opacity="0.4" />
+                <ellipse cx="260" cy="145" rx="10" ry="5" fill="white" opacity="0.2" transform="rotate(-45 260 145)" />
+                <ellipse cx="140" cy="145" rx="10" ry="5" fill="white" opacity="0.2" transform="rotate(45 140 145)" />
             </svg>
         </div>
     </aside>
 
-    <script src="../js/instrucciones.js"></script>
+    <script src="/js/instrucciones.js"></script>
 </body>
+
 </html>

@@ -1,27 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rompecabezas - Personalizar Asistente</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <svg width="0" height="0" style="position: absolute; overflow: hidden;" aria-hidden="true">
         <defs>
-            <linearGradient id="globalSuitGradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1"/><stop offset="50%" style="stop-color:#2563EB;stop-opacity:1"/><stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalCapeGradient" x1="50%" y1="0%" x2="50%" y2="100%"><stop offset="0%" style="stop-color:#EF4444;stop-opacity:1"/><stop offset="100%" style="stop-color:#991B1B;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalSkinGradient" x1="0%" y1="0%" x2="100%" y2="50%"><stop offset="0%" style="stop-color:#FFE4C4;stop-opacity:1"/><stop offset="100%" style="stop-color:#F5C19B;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalGoldGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#FCD34D;stop-opacity:1"/><stop offset="50%" style="stop-color:#F59E0B;stop-opacity:1"/><stop offset="100%" style="stop-color:#B45309;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalMetalGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#E5E7EB;stop-opacity:1"/><stop offset="50%" style="stop-color:#9CA3AF;stop-opacity:1"/><stop offset="100%" style="stop-color:#4B5563;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalBlueEye" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1"/><stop offset="100%" style="stop-color:#2563EB;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalDogFur" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1"/><stop offset="100%" style="stop-color:#B45309;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalAltSuit" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#10B981;stop-opacity:1"/><stop offset="100%" style="stop-color:#047857;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalAltCape" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1"/><stop offset="100%" style="stop-color:#5B21B6;stop-opacity:1"/></linearGradient>
-            <linearGradient id="globalSkinGradientAlt" x1="0%" y1="0%" x2="100%" y2="50%"><stop offset="0%" style="stop-color:#FFE4C4;stop-opacity:1"/><stop offset="100%" style="stop-color:#F5C19B;stop-opacity:1"/></linearGradient>
+            <linearGradient id="globalSuitGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#2563EB;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalCapeGradient" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#991B1B;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalSkinGradient" x1="0%" y1="0%" x2="100%" y2="50%">
+                <stop offset="0%" style="stop-color:#FFE4C4;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#F5C19B;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalGoldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FCD34D;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#F59E0B;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#B45309;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalMetalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#E5E7EB;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#9CA3AF;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#4B5563;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalBlueEye" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalDogFur" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#B45309;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalAltSuit" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#047857;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalAltCape" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#5B21B6;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="globalSkinGradientAlt" x1="0%" y1="0%" x2="100%" y2="50%">
+                <stop offset="0%" style="stop-color:#FFE4C4;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#F5C19B;stop-opacity:1" />
+            </linearGradient>
         </defs>
     </svg>
 
@@ -46,96 +81,131 @@
 
                 <div class="customize-grid-column" role="region" aria-label="Galería de opciones de avatar">
                     <div class="avatar-grid" role="radiogroup" aria-labelledby="titulo-personalizar">
-                        
-                        <button type="button" class="avatar-option selected" data-id="hero" role="radio" aria-checked="true" aria-label="Superhéroe Clásico con traje azul y capa roja">
-                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg" aria-hidden="true">
-                                <path d="M130,140 Q60,250 80,450 L320,450 Q340,250 270,140 Z" fill="url(#globalCapeGradient)"/>
-                                <path d="M130,140 Q100,250 110,450 L140,450 Q130,300 150,140 Z" fill="#991B1B" opacity="0.4"/>
-                                <path d="M270,140 Q300,250 290,450 L260,450 Q270,300 250,140 Z" fill="#991B1B" opacity="0.4"/>
+
+                        <button type="button" class="avatar-option selected" data-id="hero" role="radio"
+                            aria-checked="true" aria-label="Superhéroe Clásico con traje azul y capa roja">
+                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg"
+                                aria-hidden="true">
+                                <path d="M130,140 Q60,250 80,450 L320,450 Q340,250 270,140 Z"
+                                    fill="url(#globalCapeGradient)" />
+                                <path d="M130,140 Q100,250 110,450 L140,450 Q130,300 150,140 Z" fill="#991B1B"
+                                    opacity="0.4" />
+                                <path d="M270,140 Q300,250 290,450 L260,450 Q270,300 250,140 Z" fill="#991B1B"
+                                    opacity="0.4" />
                                 <g transform="translate(0, -10)">
-                                    <path d="M165,280 Q150,350 155,400 L160,450 L195,450 L198,330 L190,280 Z" fill="url(#globalSuitGradient)"/>
-                                    <path d="M235,280 Q250,350 245,400 L240,450 L205,450 L202,330 L210,280 Z" fill="url(#globalSuitGradient)"/>
-                                    <path d="M158,380 L197,380 L195,450 L160,450 Z" fill="#DC2626"/>
-                                    <path d="M242,380 L203,380 L205,450 L240,450 Z" fill="#DC2626"/>
+                                    <path d="M165,280 Q150,350 155,400 L160,450 L195,450 L198,330 L190,280 Z"
+                                        fill="url(#globalSuitGradient)" />
+                                    <path d="M235,280 Q250,350 245,400 L240,450 L205,450 L202,330 L210,280 Z"
+                                        fill="url(#globalSuitGradient)" />
+                                    <path d="M158,380 L197,380 L195,450 L160,450 Z" fill="#DC2626" />
+                                    <path d="M242,380 L203,380 L205,450 L240,450 Z" fill="#DC2626" />
                                 </g>
-                                <path d="M165,270 L235,270 L235,290 L210,320 L190,320 L165,290 Z" fill="#1E40AF"/>
-                                <path d="M140,140 L260,140 L250,200 L235,280 L165,280 L150,200 Z" fill="url(#globalSuitGradient)"/>
-                                <rect x="165" y="270" width="70" height="15" fill="url(#globalGoldGradient)" rx="2"/>
-                                <circle cx="200" cy="277" r="12" fill="url(#globalGoldGradient)" stroke="#B45309" stroke-width="2"/>
-                                <path d="M140,145 Q110,145 105,180 Q100,210 120,225" fill="none" stroke="url(#globalSkinGradient)" stroke-width="28" stroke-linecap="round"/>
-                                <circle cx="140" cy="150" r="22" fill="url(#globalSuitGradient)"/>
-                                <path d="M260,145 Q290,145 295,180 Q300,210 280,225" fill="none" stroke="url(#globalSkinGradient)" stroke-width="28" stroke-linecap="round"/>
-                                <circle cx="260" cy="150" r="22" fill="url(#globalSuitGradient)"/>
-                                <circle cx="120" cy="225" r="16" fill="#DC2626"/>
-                                <circle cx="280" cy="225" r="16" fill="#DC2626"/>
-                                <path d="M185,130 L215,130 L215,150 L185,150 Z" fill="#F5C19B"/>
-                                <path d="M175,80 L225,80 L225,100 Q225,135 200,135 Q175,135 175,100 Z" fill="url(#globalSkinGradient)"/>
-                                <ellipse cx="172" cy="100" rx="5" ry="8" fill="url(#globalSkinGradient)"/>
-                                <ellipse cx="228" cy="100" rx="5" ry="8" fill="url(#globalSkinGradient)"/>
-                                <path d="M175,80 L225,80 L225,95 Q225,115 200,115 Q175,115 175,95 Z" fill="#2563EB"/>
-                                <path d="M180,92 Q190,88 198,92 L196,98 L182,98 Z" fill="white"/>
-                                <path d="M202,92 Q210,88 220,92 L218,98 L204,98 Z" fill="white"/>
-                                <path d="M190,125 Q200,128 210,125" fill="none" stroke="#A85D36" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M172,80 Q165,60 180,50 Q200,35 220,50 Q235,60 228,80 L225,80 Q200,60 175,80 Z" fill="#111827"/>
+                                <path d="M165,270 L235,270 L235,290 L210,320 L190,320 L165,290 Z" fill="#1E40AF" />
+                                <path d="M140,140 L260,140 L250,200 L235,280 L165,280 L150,200 Z"
+                                    fill="url(#globalSuitGradient)" />
+                                <rect x="165" y="270" width="70" height="15" fill="url(#globalGoldGradient)" rx="2" />
+                                <circle cx="200" cy="277" r="12" fill="url(#globalGoldGradient)" stroke="#B45309"
+                                    stroke-width="2" />
+                                <path d="M140,145 Q110,145 105,180 Q100,210 120,225" fill="none"
+                                    stroke="url(#globalSkinGradient)" stroke-width="28" stroke-linecap="round" />
+                                <circle cx="140" cy="150" r="22" fill="url(#globalSuitGradient)" />
+                                <path d="M260,145 Q290,145 295,180 Q300,210 280,225" fill="none"
+                                    stroke="url(#globalSkinGradient)" stroke-width="28" stroke-linecap="round" />
+                                <circle cx="260" cy="150" r="22" fill="url(#globalSuitGradient)" />
+                                <circle cx="120" cy="225" r="16" fill="#DC2626" />
+                                <circle cx="280" cy="225" r="16" fill="#DC2626" />
+                                <path d="M185,130 L215,130 L215,150 L185,150 Z" fill="#F5C19B" />
+                                <path d="M175,80 L225,80 L225,100 Q225,135 200,135 Q175,135 175,100 Z"
+                                    fill="url(#globalSkinGradient)" />
+                                <ellipse cx="172" cy="100" rx="5" ry="8" fill="url(#globalSkinGradient)" />
+                                <ellipse cx="228" cy="100" rx="5" ry="8" fill="url(#globalSkinGradient)" />
+                                <path d="M175,80 L225,80 L225,95 Q225,115 200,115 Q175,115 175,95 Z" fill="#2563EB" />
+                                <path d="M180,92 Q190,88 198,92 L196,98 L182,98 Z" fill="white" />
+                                <path d="M202,92 Q210,88 220,92 L218,98 L204,98 Z" fill="white" />
+                                <path d="M190,125 Q200,128 210,125" fill="none" stroke="#A85D36" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <path d="M172,80 Q165,60 180,50 Q200,35 220,50 Q235,60 228,80 L225,80 Q200,60 175,80 Z"
+                                    fill="#111827" />
                             </svg>
                         </button>
 
-                        <button type="button" class="avatar-option" data-id="robot" role="radio" aria-checked="false" aria-label="Robot Amigable de metal gris con ojos azules">
-                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg" aria-hidden="true">
-                                <path d="M165,300 L160,450 L195,450 L200,300 Z" fill="#6B7280"/>
-                                <path d="M235,300 L240,450 L205,450 L200,300 Z" fill="#6B7280"/>
-                                <rect x="155" y="380" width="45" height="70" rx="5" fill="url(#globalMetalGradient)"/>
-                                <rect x="200" y="380" width="45" height="70" rx="5" fill="url(#globalMetalGradient)"/>
-                                <rect x="140" y="140" width="120" height="160" rx="20" ry="20" fill="url(#globalMetalGradient)" stroke="#4B5563" stroke-width="4"/>
-                                <rect x="160" y="170" width="80" height="60" rx="5" fill="#1F2937"/>
-                                <circle cx="180" cy="200" r="10" fill="url(#globalBlueEye)"/><circle cx="220" cy="200" r="10" fill="url(#globalBlueEye)"/>
-                                <rect x="170" y="250" width="60" height="10" rx="2" fill="#374151"/>
-                                <path d="M120,180 L140,180 L140,250 L120,250 Q100,215 120,180" fill="url(#globalMetalGradient)"/>
-                                <path d="M280,180 L260,180 L260,250 L280,250 Q300,215 280,180" fill="url(#globalMetalGradient)"/>
-                                <line x1="200" y1="140" x2="200" y2="100" stroke="#4B5563" stroke-width="6"/>
-                                <circle cx="200" cy="90" r="15" fill="#EF4444"/>
+                        <button type="button" class="avatar-option" data-id="robot" role="radio" aria-checked="false"
+                            aria-label="Robot Amigable de metal gris con ojos azules">
+                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg"
+                                aria-hidden="true">
+                                <path d="M165,300 L160,450 L195,450 L200,300 Z" fill="#6B7280" />
+                                <path d="M235,300 L240,450 L205,450 L200,300 Z" fill="#6B7280" />
+                                <rect x="155" y="380" width="45" height="70" rx="5" fill="url(#globalMetalGradient)" />
+                                <rect x="200" y="380" width="45" height="70" rx="5" fill="url(#globalMetalGradient)" />
+                                <rect x="140" y="140" width="120" height="160" rx="20" ry="20"
+                                    fill="url(#globalMetalGradient)" stroke="#4B5563" stroke-width="4" />
+                                <rect x="160" y="170" width="80" height="60" rx="5" fill="#1F2937" />
+                                <circle cx="180" cy="200" r="10" fill="url(#globalBlueEye)" />
+                                <circle cx="220" cy="200" r="10" fill="url(#globalBlueEye)" />
+                                <rect x="170" y="250" width="60" height="10" rx="2" fill="#374151" />
+                                <path d="M120,180 L140,180 L140,250 L120,250 Q100,215 120,180"
+                                    fill="url(#globalMetalGradient)" />
+                                <path d="M280,180 L260,180 L260,250 L280,250 Q300,215 280,180"
+                                    fill="url(#globalMetalGradient)" />
+                                <line x1="200" y1="140" x2="200" y2="100" stroke="#4B5563" stroke-width="6" />
+                                <circle cx="200" cy="90" r="15" fill="#EF4444" />
                             </svg>
                         </button>
 
-                        <button type="button" class="avatar-option" data-id="pet" role="radio" aria-checked="false" aria-label="Mascota Adorable, perrito dorado con collar rojo">
-                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg" aria-hidden="true">
-                                <path d="M150,300 L140,450 L170,450 L180,300 Z" fill="url(#globalDogFur)"/>
-                                <path d="M250,300 L260,450 L230,450 L220,300 Z" fill="url(#globalDogFur)"/>
-                                <path d="M130,200 Q200,100 270,200 L270,350 Q200,400 130,350 Z" fill="url(#globalDogFur)"/>
-                                <ellipse cx="200" cy="350" rx="30" ry="20" fill="#FEF3C7"/>
-                                <circle cx="200" cy="220" r="70" fill="url(#globalDogFur)"/>
-                                <path d="M140,160 L130,220 L160,200 Z" fill="#92400E"/>
-                                <path d="M260,160 L270,220 L240,200 Z" fill="#92400E"/>
-                                <circle cx="180" cy="210" r="8" fill="#1F2937"/><circle cx="220" cy="210" r="8" fill="#1F2937"/>
-                                <ellipse cx="200" cy="240" rx="15" ry="10" fill="#1F2937"/>
-                                <path d="M200,250 Q200,270 210,260" fill="none" stroke="#FEF3C7" stroke-width="3"/>
-                                <rect x="180" y="300" width="40" height="10" fill="#DC2626"/>
-                                <circle cx="200" cy="315" r="8" fill="#FCD34D"/>
+                        <button type="button" class="avatar-option" data-id="pet" role="radio" aria-checked="false"
+                            aria-label="Mascota Adorable, perrito dorado con collar rojo">
+                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg"
+                                aria-hidden="true">
+                                <path d="M150,300 L140,450 L170,450 L180,300 Z" fill="url(#globalDogFur)" />
+                                <path d="M250,300 L260,450 L230,450 L220,300 Z" fill="url(#globalDogFur)" />
+                                <path d="M130,200 Q200,100 270,200 L270,350 Q200,400 130,350 Z"
+                                    fill="url(#globalDogFur)" />
+                                <ellipse cx="200" cy="350" rx="30" ry="20" fill="#FEF3C7" />
+                                <circle cx="200" cy="220" r="70" fill="url(#globalDogFur)" />
+                                <path d="M140,160 L130,220 L160,200 Z" fill="#92400E" />
+                                <path d="M260,160 L270,220 L240,200 Z" fill="#92400E" />
+                                <circle cx="180" cy="210" r="8" fill="#1F2937" />
+                                <circle cx="220" cy="210" r="8" fill="#1F2937" />
+                                <ellipse cx="200" cy="240" rx="15" ry="10" fill="#1F2937" />
+                                <path d="M200,250 Q200,270 210,260" fill="none" stroke="#FEF3C7" stroke-width="3" />
+                                <rect x="180" y="300" width="40" height="10" fill="#DC2626" />
+                                <circle cx="200" cy="315" r="8" fill="#FCD34D" />
                             </svg>
                         </button>
 
-                        <button type="button" class="avatar-option" data-id="hero-alt" role="radio" aria-checked="false" aria-label="Héroe Alternativo con traje verde y capa morada">
-                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg" aria-hidden="true">
-                                <path d="M130,140 Q60,250 80,450 L320,450 Q340,250 270,140 Z" fill="url(#globalAltCape)"/>
+                        <button type="button" class="avatar-option" data-id="hero-alt" role="radio" aria-checked="false"
+                            aria-label="Héroe Alternativo con traje verde y capa morada">
+                            <svg viewBox="0 0 400 550" xmlns="http://www.w3.org/2000/svg" class="avatar-svg"
+                                aria-hidden="true">
+                                <path d="M130,140 Q60,250 80,450 L320,450 Q340,250 270,140 Z"
+                                    fill="url(#globalAltCape)" />
                                 <g transform="translate(0, -10)">
-                                    <path d="M165,280 Q150,350 155,400 L160,450 L195,450 L198,330 L190,280 Z" fill="url(#globalAltSuit)"/>
-                                    <path d="M235,280 Q250,350 245,400 L240,450 L205,450 L202,330 L210,280 Z" fill="url(#globalAltSuit)"/>
-                                    <path d="M158,380 L197,380 L195,450 L160,450 Z" fill="#4B5563"/>
-                                    <path d="M242,380 L203,380 L205,450 L240,450 Z" fill="#4B5563"/>
+                                    <path d="M165,280 Q150,350 155,400 L160,450 L195,450 L198,330 L190,280 Z"
+                                        fill="url(#globalAltSuit)" />
+                                    <path d="M235,280 Q250,350 245,400 L240,450 L205,450 L202,330 L210,280 Z"
+                                        fill="url(#globalAltSuit)" />
+                                    <path d="M158,380 L197,380 L195,450 L160,450 Z" fill="#4B5563" />
+                                    <path d="M242,380 L203,380 L205,450 L240,450 Z" fill="#4B5563" />
                                 </g>
-                                <path d="M140,140 L260,140 L250,200 L235,280 L165,280 L150,200 Z" fill="url(#globalAltSuit)"/>
-                                <rect x="165" y="270" width="70" height="15" fill="#FCD34D"/>
-                                <path d="M140,145 Q110,145 105,180 Q100,210 120,225" fill="none" stroke="url(#globalSkinGradientAlt)" stroke-width="28" stroke-linecap="round"/>
-                                <circle cx="140" cy="150" r="22" fill="url(#globalAltSuit)"/>
-                                <path d="M260,145 Q290,145 295,180 Q300,210 280,225" fill="none" stroke="url(#globalSkinGradientAlt)" stroke-width="28" stroke-linecap="round"/>
-                                <circle cx="260" cy="150" r="22" fill="url(#globalAltSuit)"/>
-                                <circle cx="120" cy="225" r="16" fill="#4B5563"/>
-                                <circle cx="280" cy="225" r="16" fill="#4B5563"/>
-                                <path d="M185,130 L215,130 L215,150 L185,150 Z" fill="#F5C19B"/>
-                                <path d="M175,80 L225,80 L225,100 Q225,135 200,135 Q175,135 175,100 Z" fill="url(#globalSkinGradientAlt)"/>
-                                <path d="M170,85 Q200,110 230,85 L230,65 Q200,90 170,65 Z" fill="#10B981"/>
-                                <circle cx="185" cy="95" r="3" fill="white"/><circle cx="215" cy="95" r="3" fill="white"/>
-                                <path d="M172,80 Q165,60 180,50 Q200,35 220,50 Q235,60 228,80 L225,80 Q200,60 175,80 Z" fill="#1F2937"/>
+                                <path d="M140,140 L260,140 L250,200 L235,280 L165,280 L150,200 Z"
+                                    fill="url(#globalAltSuit)" />
+                                <rect x="165" y="270" width="70" height="15" fill="#FCD34D" />
+                                <path d="M140,145 Q110,145 105,180 Q100,210 120,225" fill="none"
+                                    stroke="url(#globalSkinGradientAlt)" stroke-width="28" stroke-linecap="round" />
+                                <circle cx="140" cy="150" r="22" fill="url(#globalAltSuit)" />
+                                <path d="M260,145 Q290,145 295,180 Q300,210 280,225" fill="none"
+                                    stroke="url(#globalSkinGradientAlt)" stroke-width="28" stroke-linecap="round" />
+                                <circle cx="260" cy="150" r="22" fill="url(#globalAltSuit)" />
+                                <circle cx="120" cy="225" r="16" fill="#4B5563" />
+                                <circle cx="280" cy="225" r="16" fill="#4B5563" />
+                                <path d="M185,130 L215,130 L215,150 L185,150 Z" fill="#F5C19B" />
+                                <path d="M175,80 L225,80 L225,100 Q225,135 200,135 Q175,135 175,100 Z"
+                                    fill="url(#globalSkinGradientAlt)" />
+                                <path d="M170,85 Q200,110 230,85 L230,65 Q200,90 170,65 Z" fill="#10B981" />
+                                <circle cx="185" cy="95" r="3" fill="white" />
+                                <circle cx="215" cy="95" r="3" fill="white" />
+                                <path d="M172,80 Q165,60 180,50 Q200,35 220,50 Q235,60 228,80 L225,80 Q200,60 175,80 Z"
+                                    fill="#1F2937" />
                             </svg>
                         </button>
 
@@ -144,19 +214,23 @@
             </div>
 
             <div class="settings-actions">
-                <button type="button" class="btn-large btn-cancel" id="btn-cancel-avatar" aria-label="Cancelar y volver a ajustes">Cancelar</button>
-                <button type="button" class="btn-large btn-save" id="btn-save-avatar" aria-label="Guardar selección de avatar">Guardar Selección</button>
+                <button type="button" class="btn-large btn-cancel" id="btn-cancel-avatar"
+                    aria-label="Cancelar y volver a ajustes">Cancelar</button>
+                <button type="button" class="btn-large btn-save" id="btn-save-avatar"
+                    aria-label="Guardar selección de avatar">Guardar Selección</button>
             </div>
         </section>
     </main>
 
     <aside class="mascot-section" role="complementary" aria-label="Asistente virtual del juego">
-        <div class="speech-bubble" id="mascot-text" role="status" aria-live="polite" tabindex="0" aria-label="Mensaje del asistente: ¿Cuál es tu estilo favorito? ¡Elige sabiamente!">
+        <div class="speech-bubble" id="mascot-text" role="status" aria-live="polite" tabindex="0"
+            aria-label="Mensaje del asistente: ¿Cuál es tu estilo favorito? ¡Elige sabiamente!">
             ¿Cuál es tu estilo favorito? ¡Elige sabiamente!
         </div>
         <div id="current-mini-mascot" class="mascot-vector-container" aria-hidden="true"></div>
     </aside>
 
-    <script src="../js/asistente.js"></script>
+    <script src="/js/asistente.js"></script>
 </body>
+
 </html>
